@@ -49,7 +49,8 @@ export default function Hotdrops({hotDrops}) {
 }
 
 export async function getStaticProps() {
-  const hotDrops = await getHotDrops(12);
+  const date = new Date()
+  const hotDrops = await getHotDrops(12, date);
 
   return {
     props: {

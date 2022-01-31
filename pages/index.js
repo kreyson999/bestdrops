@@ -79,9 +79,10 @@ export default function Home({topDrop, hotDrops, allDrops}) {
 }
 
 export async function getStaticProps() {
+  const date = new Date()
   const topDrop = await getTopDrop()
-  const hotDrops = await getHotDrops(4)
-  const allDrops = await getAllDrops(6)
+  const hotDrops = await getHotDrops(4, date)
+  const allDrops = await getAllDrops(6, date)
   return {
     props: {
       topDrop: topDrop,

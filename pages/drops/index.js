@@ -49,12 +49,13 @@ export default function Drops({allDrops}) {
 }
 
 export async function getStaticProps() {
-   const allDrops = await getAllDrops(12);
+  const date = new Date()
+  const allDrops = await getAllDrops(12, date);
 
-   return {
-     props: {
-       allDrops: allDrops
-     },
-     revalidate: REVALIDATE_PAGE_CONTENT,
-   }
+  return {
+    props: {
+      allDrops: allDrops
+    },
+    revalidate: REVALIDATE_PAGE_CONTENT,
+  }
 }
