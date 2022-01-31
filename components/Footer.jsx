@@ -9,17 +9,17 @@ const Footer = () => {
           <p className="text-gray-300">Zdjęcia użyte na stronie nie są naszego autorstwa i należą do ich prawdziwych właścicieli!</p>
         </div>
         <div className="space-x-2">
-          <a aria-label="Nasz instagram" href="https://instagram.com">
+          <a aria-label="Nasz instagram" href="https://www.instagram.com/bestdrops.pl/">
             <Image
-            src={'/icons/instagram_logo.png'}
+            src={'/icons/instagram.svg'}
             alt="Nasz instagram"
             width={40}
             height={40}
             />
           </a>
-          <a aria-label="Nasz tiktok" href="https://tiktok.com">
+          <a aria-label="Nasz tiktok" href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL">
             <Image
-            src={'/icons/tiktok_logo.png'}
+            src={'/icons/tiktok.svg'}
             alt="Nasz tiktok"
             width={40}
             height={40}

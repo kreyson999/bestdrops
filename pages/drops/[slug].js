@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import getFormattedDate from "../../helpers/getFormattedDate";
 import { getAllDrops, getDropDetails, REVALIDATE_PAGE_CONTENT } from '../../lib/graphCMS'
@@ -7,6 +8,21 @@ function DropItemPage({drop}) {
   const { date, description, featuredImage, linkToDrop, linkToGoat, linkToStockX, name, resell, retail } = drop
   return (
     <>
+      <Head>
+        <title>BESTDROPS.PL - {name}!</title>
+        <meta name="title" content={`BESTDROPS.PL - ${name}!`}/>
+        <meta name="description" content={`${name} będą dropić już ${getFormattedDate(date)}. Resell będzie wynosił ${resell} PLN, a retail ${retail} PLN.`}/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://bestdrops.pl/"/>
+        <meta property="og:title" content={`BESTDROPS.PL - ${name}!`}/>
+        <meta property="og:description" content={`${name} będą dropić już ${getFormattedDate(date)}. Resell będzie wynosił ${resell} PLN, a retail ${retail} PLN.`}/>
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content="https://bestdrops.pl/"/>
+        <meta property="twitter:title" content={`BESTDROPS.PL - ${name}!`}/>
+        <meta property="twitter:description" content={`${name} będą dropić już ${getFormattedDate(date)}. Resell będzie wynosił ${resell} PLN, a retail ${retail} PLN.`}/>
+      </Head>
       <div className="max-w-screen-lg mx-auto px-4 py-16 grid grid-cols-2 gap-10">
         <div className="relative aspect-square border-4 bg-white border-blue-600 rounded-2xl overflow-hidden">
           <Image
@@ -14,6 +30,7 @@ function DropItemPage({drop}) {
             alt={name}
             layout="fill"
             objectFit="cover"
+            priority
           />
         </div>
         <div className="flex flex-col justify-between">
@@ -26,36 +43,42 @@ function DropItemPage({drop}) {
             </div>
           </div>
           <div className="flex space-x-4">
-            <a href={linkToStockX} className="bg-white relative w-full rounded-xl grid place-content-center">
-              <div className="relative">
-                <Image
-                  src={'/images/stockxlogo.png'}
-                  alt="Goat"
-                  width={150}
-                  height={75}
-                  className="object-contain"
-                />
-              </div>
-            </a>
-            <a href={linkToGoat} className="bg-white relative w-full rounded-xl grid place-content-center">
-              <div className="relative">
-                <Image
-                  src={'/images/goatlogo.png'}
-                  alt="Goat"
-                  width={150}
-                  height={75}
-                  className="object-contain"
-                />
-              </div>
-            </a>
+            {linkToStockX && (
+              <a href={linkToStockX} className="bg-white relative w-full rounded-xl grid place-content-center">
+                <div className="relative">
+                  <Image
+                    src={'/images/stockxlogo.png'}
+                    alt="Goat"
+                    width={150}
+                    height={75}
+                    className="object-contain"
+                  />
+                </div>
+              </a>
+            )}
+            {linkToGoat && (
+              <a href={linkToGoat} className="bg-white relative w-full rounded-xl grid place-content-center">
+                <div className="relative">
+                  <Image
+                    src={'/images/goatlogo.png'}
+                    alt="Goat"
+                    width={150}
+                    height={75}
+                    className="object-contain"
+                  />
+                </div>
+              </a>
+            )}
           </div>
         </div>
       </div>
-      <div className="max-w-screen-lg mx-auto px-4">
-        <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-6 py-4 text-3xl font-bold rounded-xl">
-          Przejdź do dropu!
-        </a>
-      </div>
+      {linkToDrop && (
+        <div className="max-w-screen-sm mx-auto px-4">
+          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-6 py-2 text-2xl rounded-xl">
+            Przejdź do dropu!
+          </a>
+        </div>
+      )}
       <hr className="my-12 border-custom-black border-1"/>
       <div className="max-w-screen-lg mx-auto px-4">
         <p className="text-xl">{description}</p>

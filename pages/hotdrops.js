@@ -1,9 +1,25 @@
+import Head from 'next/head';
 import { DropItem } from '../components'
 import { getHotDrops, REVALIDATE_PAGE_CONTENT } from '../lib/graphCMS'
 
 export default function Hotdrops({hotDrops}) {
   return (
     <>
+      <Head>
+        <title>BESTDROPS.PL - Hot dropy!</title>
+        <meta name="title" content="BESTDROPS.PL - Hot dropy!"/>
+        <meta name="description" content="Gorące dropy, na których można zarobić w jednym miejscu!"/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://bestdrops.pl/"/>
+        <meta property="og:title" content="BESTDROPS.PL - Hot dropy!"/>
+        <meta property="og:description" content="Gorące dropy, na których można zarobić w jednym miejscu!"/>
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content="https://bestdrops.pl/"/>
+        <meta property="twitter:title" content="BESTDROPS.PL - Hot dropy!"/>
+        <meta property="twitter:description" content="Gorące dropy, na których można zarobić w jednym miejscu!"/>
+      </Head>
       <div className="relative headerBg py-16 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity">
         <header className="w-full h-full max-w-screen-lg mx-auto px-4">
           <h1 className="relative text-7xl text-center font-oswald uppercase text-white font-bold pb-3 z-20">Hot dropy</h1>

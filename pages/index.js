@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import { DropItem } from '../components'
 import { getAllDrops, getHotDrops, getTopDrop, REVALIDATE_PAGE_CONTENT } from "../lib/graphCMS"
 
@@ -5,6 +7,21 @@ export default function Home({topDrop, hotDrops, allDrops}) {
 
   return (
     <>
+      <Head>
+        <title>BESTDROPS.PL - Wszystkie dropy w jednym miejscu!</title>
+        <meta name="title" content="BESTDROPS.PL - Wszystkie dropy w jednym miejscu!"/>
+        <meta name="description" content="Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!"/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://bestdrops.pl/"/>
+        <meta property="og:title" content="BESTDROPS.PL - Wszystkie dropy w jednym miejscu!"/>
+        <meta property="og:description" content="Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!"/>
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content="https://bestdrops.pl/"/>
+        <meta property="twitter:title" content="BESTDROPS.PL - Wszystkie dropy w jednym miejscu!"/>
+        <meta property="twitter:description" content="Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!"/>
+      </Head>
       <div className="relative headerBg pt-24 pb-48 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity after:z-1">
         <header className="w-full h-full max-w-screen-lg mx-auto px-4 grid grid-cols-2 gap-10">
           <div className="flex flex-col h-full w-full">
