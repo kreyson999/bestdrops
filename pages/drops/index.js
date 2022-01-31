@@ -6,7 +6,7 @@ export default function Drops({allDrops}) {
   return (
     <>
       <Head>
-        <title>BESTDROPS.PL - Hot dropy!</title>
+        <title>BESTDROPS.PL - Dropy!</title>
         <meta name="title" content="BESTDROPS.PL - Wszystkie dropy!"/>
         <meta name="description" content="Wszystkie najbliższe dropy w jednym miejscu!"/>
 
