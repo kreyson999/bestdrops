@@ -10,7 +10,7 @@ const NavLink = ({href, children}) => {
 
   return (
     <Link href={href}>
-      <a className={`block font-bold uppercase grid text-white text-2xl h-full place-content-center py-3 px-1 ${isActive ? 'border-b-2 border-t-2 border-t-custom-black border-b-blue-600' : ''}`}>
+      <a className={`block font-bold uppercase grid text-white text-xl md:text-2xl h-full place-content-center py-3 px-1 ${isActive ? 'border-b-2 border-t-2 border-t-custom-black border-b-blue-600' : ''}`}>
         {children}
       </a>
     </Link>

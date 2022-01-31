@@ -20,12 +20,12 @@ export default function Drops({allDrops}) {
         <meta property="twitter:title" content="BESTDROPS.PL - Wszystkie dropy!"/>
         <meta property="twitter:description" content="Wszystkie najbliższe dropy w jednym miejscu!"/>
       </Head>
-      <div className="relative headerBg py-16 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity">
+      <div className="relative headerBg py-8 md:py-16 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity">
         <header className="w-full h-full max-w-screen-lg mx-auto px-4">
-          <h1 className="relative text-7xl text-center font-oswald uppercase text-white font-bold pb-3 z-20">Dropy</h1>
+          <h1 className="relative text-4xl md:text-7xl text-center font-oswald uppercase text-white font-bold pb-3 z-20">Dropy</h1>
         </header>
       </div>
-      <div className="container mx-auto px-4 py-16 grid grid-cols-3 gap-6">
+      <div className="container mx-auto px-4 py-8 md:py-16 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {allDrops.map((drop, index) => {
           return (
             <DropItem 
