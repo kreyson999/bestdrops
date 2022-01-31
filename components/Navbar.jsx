@@ -19,7 +19,7 @@ const NavLink = ({href, children}) => {
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 w-full bg-custom-black">
+    <nav className="fixed top-0 z-50 w-full bg-custom-black border-b border-gray-700">
       <div className="container mx-auto px-4 flex justify-between">
         <Link href={'/'}>
           <a className="block h-full grid place-content-center py-3 px-1">

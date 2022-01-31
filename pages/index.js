@@ -22,8 +22,8 @@ export default function Home({topDrop, hotDrops, allDrops}) {
         <meta property="twitter:title" content="BESTDROPS.PL - Wszystkie dropy w jednym miejscu!"/>
         <meta property="twitter:description" content="Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!"/>
       </Head>
-      <div className="relative headerBg pt-4 md:pt-12 pb-16 md:pb-24 lg:pt-24 lg:pb-48 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity after:z-1">
-        <header className="w-full h-full md:max-w-lg lg:max-w-screen-lg mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-10">
+      <div className="relative headerBg pt-4 md:pt-12 pb-16 md:pb-24 lg:pt-16 lg:pb-32 after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-black-w-opacity after:z-1">
+        <header className="w-full h-full md:max-w-lg lg:max-w-screen-lg mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           <div className="flex flex-col h-full w-full">
             <h1 className="text-3xl lg:text-4xl font-oswald uppercase text-white font-bold pb-3 z-10">Top drop</h1>
             <DropItem 

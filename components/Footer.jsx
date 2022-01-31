@@ -13,16 +13,16 @@ const Footer = () => {
             <Image
             src={'/icons/instagram.svg'}
             alt="Nasz instagram"
-            width={40}
-            height={40}
+            width={34}
+            height={34}
             />
           </a>
           <a aria-label="Nasz tiktok" href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL">
             <Image
             src={'/icons/tiktok.svg'}
             alt="Nasz tiktok"
-            width={40}
-            height={40}
+            width={34}
+            height={34}
             />
           </a>
         </div>

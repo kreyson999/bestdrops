@@ -25,16 +25,19 @@ export default function Hotdrops({hotDrops}) {
           <h1 className="relative text-4xl md:text-7xl text-center font-oswald uppercase text-white font-bold pb-3 z-20">Hot dropy</h1>
         </header>
       </div>
-      <div className="container mx-auto px-4 py-8 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {hotDrops.map((drop, index) => {
-          return (
-            <DropItem 
-              key={index}
-              drop={drop}
-              isRow={true}
-            />
-          )
-        })}
+      <div className='container mx-auto px-4 pt-6 pb-8 md:pt-10 md:pb-16'>
+        <h2 className='text-lg sm:text-xl py-4'>Znajdziesz tutaj gorące dropy, na których możesz zarobić spore pieniądze!</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {hotDrops.map((drop, index) => {
+            return (
+              <DropItem 
+                key={index}
+                drop={drop}
+                isRow={true}
+              />
+            )
+          })}
+        </div>
       </div>
       <style jsx>{`
         .headerBg {

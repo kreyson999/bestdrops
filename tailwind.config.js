@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'custom-black':'#141414',
-        'black-w-opacity': '#000000B3',
+        'black-w-opacity': '#000000D1',
       },
       fontFamily: {
         'oswald': ['"Oswald"', 'Arial', 'sans-serif']
