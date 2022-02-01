@@ -76,8 +76,8 @@ function DropItemPage({drop}) {
         </div>
       </div>
       {linkToDrop && (
-        <div className="max-w-screen-sm mx-auto px-4">
-          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-6 py-2 text-2xl rounded-xl">
+        <div className="max-w-fit mx-auto px-4">
+          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-8 py-2 text-2xl rounded-xl transition duration-500 transform hover:-translate-y-1">
             Przejdź do dropu!
           </a>
         </div>
