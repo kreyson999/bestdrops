@@ -28,14 +28,14 @@ export default function Drops({allDrops}) {
       <div className='container mx-auto px-4 pt-6 pb-8 md:pt-10 md:pb-16'>
         <div className="w-full flex justify-between pb-5 items-center">
           <h2 className='text-lg sm:text-xl py-4'>Znajdziesz tutaj wszystkie dropy dostępne na naszej stronie!</h2>
-          <div>
+          {/* <div>
             <input type="checkbox" id="showOld" />
             <label htmlFor="showOld" className="ml-1 mr-4">Pokazuj stare</label>
             <select className="border-2 border-blue-600 rounded-xl px-2 py-2">
               <option value="date_ASC">Od najnowszych</option>
               <option value="date_DESC">Od najstarszych</option>
             </select>
-          </div>
+          </div> */}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {allDrops.map((drop, index) => {
