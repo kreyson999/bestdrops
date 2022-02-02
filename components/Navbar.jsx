@@ -22,12 +22,12 @@ const Navbar = () => {
     <nav className="fixed top-0 z-50 w-full bg-custom-black border-b border-gray-700">
       <div className="container mx-auto px-4 flex justify-between">
         <Link href={'/'}>
-          <a className="block h-full grid place-content-center py-3 px-1">
+          <a className="block h-full grid place-content-center py-1 px-1">
             <Image
-              src={'/icons/home.svg'}
+              src={'/images/logo.svg'}
               alt="Home"
-              width={36}
-              height={36}
+              width={52}
+              height={52}
             />
           </a>
         </Link>
