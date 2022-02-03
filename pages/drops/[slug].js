@@ -38,21 +38,21 @@ function DropItemPage({drop}) {
             <h1 className="font-oswald font-bold text-2xl md:text-5xl uppercase">{name}</h1>
             <p className="uppercase text-2xl md:text-3xl font-bold text-gray-800">{getFormattedDate(date)}</p>
             <div className="flex flex-col pb-2 space-y-1">
-              <p className="text-2xl">Resell: <span className="text-blue-600 font-bold">{resell}</span> PLN</p>
               <p className="text-2xl">Retail: <span className="text-blue-600 font-bold">{retail}</span> PLN</p>
+              <p className="text-2xl">Resell: <span className="text-blue-600 font-bold">{resell}</span> PLN</p>
             </div>
           </div>
           <div className="flex flex-col">
             <p className="text-lg pb-1">Dowiedz się więcej tutaj:</p>
-             <div className="flex space-x-4">
+             <div className="flex space-x-2 md:space-x-4">
               {linkToStockX && (
                 <a href={linkToStockX} className="bg-white relative w-full rounded-xl grid place-content-center">
-                  <div className="relative">
+                  <div className="relative grid place-content-center">
                     <Image
-                      src={'/images/stockxlogo.png'}
+                      src={'/images/stockxlogo.webp'}
                       alt="Goat"
                       width={150}
-                      height={75}
+                      height={60}
                       className="object-contain"
                     />
                   </div>
@@ -60,12 +60,12 @@ function DropItemPage({drop}) {
               )}
               {linkToGoat && (
                 <a href={linkToGoat} className="bg-white relative w-full rounded-xl grid place-content-center">
-                  <div className="relative">
+                  <div className="relative grid place-content-center">
                     <Image
-                      src={'/images/goatlogo.png'}
+                      src={'/images/goatlogo.webp'}
                       alt="Goat"
                       width={150}
-                      height={75}
+                      height={60}
                       className="object-contain"
                     />
                   </div>
@@ -77,7 +77,7 @@ function DropItemPage({drop}) {
       </div>
       {linkToDrop && (
         <div className="max-w-fit mx-auto px-4">
-          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-8 py-2 text-2xl rounded-xl transition duration-500 transform hover:-translate-y-1">
+          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-8 py-3 text-2xl rounded-lg transition duration-500 transform hover:-translate-y-1">
             Przejdź do dropu!
           </a>
         </div>

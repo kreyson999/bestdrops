@@ -9,20 +9,20 @@ const Footer = () => {
           <p className="text-gray-300">Zdjęcia użyte na stronie nie są naszego autorstwa i należą do ich prawdziwych właścicieli!</p>
         </div>
         <div className="space-x-2 flex">
-          <a aria-label="Nasz instagram" href="https://www.instagram.com/bestdrops.pl/">
+          <a className="w-9 h-9 block" aria-label="Nasz instagram" href="https://www.instagram.com/bestdrops.pl/">
             <Image
             src={'/icons/instagram.svg'}
             alt="Nasz instagram"
-            width={34}
-            height={34}
+            width={64}
+            height={64}
             />
           </a>
-          <a aria-label="Nasz tiktok" href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL">
+          <a className="w-9 h-9 block" aria-label="Nasz tiktok" href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL">
             <Image
             src={'/icons/tiktok.svg'}
             alt="Nasz tiktok"
-            width={34}
-            height={34}
+            width={64}
+            height={64}
             />
           </a>
         </div>

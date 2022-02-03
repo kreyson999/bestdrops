@@ -70,7 +70,7 @@ export default function Home({topDrop, hotDrops, allDrops}) {
       </section> */}
       <style jsx>{`
         .headerBg {
-          background-image: url('/images/bgbestdrops.png');
+          background-image: url('/images/bgbestdrops.webp');
           background-position: center;
           background-size: contain;
           background-attachment: fixed;

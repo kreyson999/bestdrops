@@ -62,7 +62,7 @@ export default function Drops({allDrops}) {
       </div> */}
       <style jsx>{`
         .headerBg {
-          background-image: url('/images/headers/dropsbg.png');
+          background-image: url('/images/headers/dropsbg.webp');
           background-position: center;
           background-size: contain;
           background-attachment: fixed;

@@ -41,7 +41,7 @@ export default function Hotdrops({hotDrops}) {
       </div>
       <style jsx>{`
         .headerBg {
-          background-image: url('/images/headers/hotdropsbg.png');
+          background-image: url('/images/headers/hotdropsbg.webp');
           background-position: center;
           background-size: contain;
           background-attachment: fixed;
