@@ -42,7 +42,7 @@ function DropItemPage({drop}) {
               <p className="text-2xl">Resell: <span className="text-blue-600 font-bold">{resell}</span> PLN</p>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col pt-4 md:pt-0">
             <p className="text-lg pb-1">Dowiedz się więcej tutaj:</p>
              <div className="flex space-x-2 md:space-x-4">
               {linkToStockX && (
@@ -77,7 +77,7 @@ function DropItemPage({drop}) {
       </div>
       {linkToDrop && (
         <div className="max-w-fit mx-auto px-4">
-          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-8 py-3 text-2xl rounded-lg transition duration-500 transform hover:-translate-y-1">
+          <a href={linkToDrop} className="block text-center bg-blue-600 text-white px-8 py-2 sm:py-3 text-2xl rounded-lg transition duration-500 transform hover:-translate-y-1">
             Przejdź do dropu!
           </a>
         </div>
