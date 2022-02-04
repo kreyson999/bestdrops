@@ -5,17 +5,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'screen': '100vw'
+      },
       colors: {
         'custom-black':'#141414',
         'black-w-opacity': '#000000D1',
       },
       fontFamily: {
-        'oswald': ['"Oswald"', 'Arial', 'sans-serif']
+        'sans': ['Archivo', 'Arial', 'sans-serif']
       },
       padding: {        
         '34': '8.5rem',      
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

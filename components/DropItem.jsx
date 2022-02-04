@@ -32,9 +32,9 @@ const DropItem = ({drop, isBig, isRow}) => {
           </div>
           <div className={`${isRow ? '' : 'dropitem__info absolute duration-300'} w-full flex flex-col justify-between bg-custom-black ${isBig ? 'px-2 py-2 md:px-4 md:py-4 h-1/2 -bottom-1/2' : `${isRow ? 'h-full px-2 py-2 md:px-4 md:py-4 bottom-0' : 'h-2/3 px-2 py-2 '} -bottom-2/3`}`}>
             <div>
-              <p className={`text-white font-light ${isBig ? 'md:text-2xl' : 'text-sm md:text-base'}`}>{getFormattedDate(drop.date)}</p>
-              <p className={`text-white font-bold ${isBig ? 'md:text-2xl' : 'text-base md:text-base'}`}>Retail: {retail} PLN</p>
-              <p className={`text-white font-bold ${isBig ? 'md:text-3xl' : 'text-base md:text-lg'}`}>Resell: {resell} PLN</p>
+              <p className={`text-white font-light ${isBig ? 'text-lg md:text-2xl' : 'text-sm md:text-lg'}`}>{getFormattedDate(drop.date)}</p>
+              <p className={`text-white font-bold ${isBig ? 'text-xl md:text-2xl' : 'text-base md:text-lg'}`}>Retail: {retail} PLN</p>
+              <p className={`text-white font-bold ${isBig ? 'text-2xl md:text-3xl' : 'text-base md:text-xl'}`}>Resell: {resell} PLN</p>
             </div>
             <p className={`hidden sm:block text-white font-light text-center  ${isBig ? 'text-xl' : 'text-sm'}`}>Kliknij, aby zobaczyć więcej!</p>
           </div>
