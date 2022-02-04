@@ -38,7 +38,6 @@ const PostContent = ({content}) => {
         case 'paragraph':
           return <p key={index} className="text-lg text-custom-black">{checkTextChildren(obj)}</p>;
         case 'block-quote':
-          console.log(obj)
           return (<div className='border-box' key={index} dangerouslySetInnerHTML={{__html: obj.children[0].text}}></div>);
         case 'image':
           return (
