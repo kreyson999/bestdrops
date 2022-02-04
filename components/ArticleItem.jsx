@@ -24,11 +24,9 @@ const ArticleItem = ({article}) => {
               <p className="hidden sm:block sm:text-xl text-gray-300">{category.title}</p>
               <p className="block sm:text-xl text-gray-300">{getFormattedDate(publishedAt)}</p>
             </div>
-            <Link href={`/news/${slug}`}>
-              <a className="hidden sm:block rounded-lg py-2 px-6 text-center text-xl xl:text-2xl font-bold text-white bg-blue-600 uppercase">
-                Czytaj
-              </a>
-            </Link>
+            <div className="hidden sm:block rounded-lg py-2 px-6 text-center text-xl xl:text-2xl font-bold text-white bg-blue-600 uppercase">
+              Czytaj
+            </div>
           </div>
         </div>
       </a>

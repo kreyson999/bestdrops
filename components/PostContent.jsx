@@ -28,17 +28,17 @@ const PostContent = ({content}) => {
 
       switch (obj.type) {
         case 'heading-one':
-          return <h1 key={index} className="text-4xl font-semibold mb-8 border-b-2 pb-6">{checkTextChildren(obj)}</h1>;
+          return <h1 key={index} className="text-4xl text-left font-semibold mb-8 border-b-2 pb-6">{checkTextChildren(obj)}</h1>;
         case 'heading-two':
-          return <h2 key={index} className="text-3xl font-semibold">{checkTextChildren(obj)}</h2>;
+          return <h2 key={index} className="text-3xl w-full font-semibold border-b pb-4 mb-4">{checkTextChildren(obj)}</h2>;
         case 'heading-three':
-          return <h3 key={index} className="text-2xl font-semibold">{checkTextChildren(obj)}</h3>;
+          return <h3 key={index} className="text-2xl w-full font-semibold">{checkTextChildren(obj)}</h3>;
         case 'heading-four':
           return <h4 key={index} className="text-xl font-semibold">{checkTextChildren(obj)}</h4>;
         case 'paragraph':
           return <p key={index} className="text-lg text-custom-black">{checkTextChildren(obj)}</p>;
         case 'block-quote':
-          return (<div className='border-box' key={index} dangerouslySetInnerHTML={{__html: obj.children[0].text}}></div>);
+          return (<blockquote key={index} className="italic border-l-4 border-blue-600 p-4 text-lg">{checkTextChildren(obj)}</blockquote>);
         case 'image':
           return (
             <div key={index} className="w-full flex justify-center my-8">

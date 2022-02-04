@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 
 import { getAllDrops, getAllArticles, getArticleDetails, REVALIDATE_PAGE_CONTENT } from "../../lib/graphCMS";
 import getFormattedDate from "../../helpers/getFormattedDate";
@@ -10,6 +11,10 @@ export default function Post({upcomingDrops, article}) {
   const { title, content, featuredImage, publishedAt, slug, category } = article
   return (
     <>
+      <Script
+      src="https://www.instagram.com/static/bundles/es6/EmbedAsyncLogger.js/aefd565f431f.js"
+      strategy="lazyOnLoad"
+      />
       <Head>
         <title>BESTDROPS.PL - {title}!</title>
         <meta name="title" content={`BESTDROPS.PL - ${title}!`}/>
@@ -51,10 +56,11 @@ export default function Post({upcomingDrops, article}) {
                   width={640}
                   height={360}
                   className="object-contain"
+                  priority
                 />
               </div>
             </div>
-            <div className="bg-white  w-full px-4 py-12 flex flex-col items-center space-y-4 max-w-screen overflow-hidden">
+            <div className="bg-white w-full px-4 py-12 flex flex-col items-center space-y-6 max-w-screen overflow-hidden">
               <PostContent content={content}/>
             </div>
           </div>
