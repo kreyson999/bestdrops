@@ -38,7 +38,7 @@ const PostContent = ({content}) => {
         case 'paragraph':
           return <p key={index} className="text-lg text-custom-black">{checkTextChildren(obj)}</p>;
         case 'block-quote':
-          return (<blockquote key={index} className="italic border-l-4 border-blue-600 p-4 text-lg">{checkTextChildren(obj)}</blockquote>);
+          return (<blockquote key={index} className="w-full italic border-l-4 border-blue-600 p-4 text-lg">{checkTextChildren(obj)}</blockquote>);
         case 'image':
           return (
             <div key={index} className="w-full flex justify-center my-8">
