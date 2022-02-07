@@ -81,7 +81,7 @@ export default function Drops() {
             value={sortType} 
             onChange={(e) => setSortType(e.target.value)} 
             className="border-2 border-blue-600 rounded-xl px-2 py-2 w-fit">
-              <option value="DESC">Od najstarszych</option>
+              <option value="DESC">Od najdalszych</option>
               <option value="ASC">Od najbliższych</option>
             </select>
           </div>

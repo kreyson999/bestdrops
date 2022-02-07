@@ -11,7 +11,8 @@ export const getServerSideProps = async ({ res }) => {
   const dynamicArticleUrls = await getAllArticles(99)
   const dynamicArticlePages = dynamicArticleUrls.map(({slug}) => ({ slug }));
 
-  const dynamicDropsUrls = await getDropsWithPagination(100)
+  const date = new Date()
+  const dynamicDropsUrls = await getDropsWithPagination(100, false, true, date)
   const dynamicDropsPages = dynamicDropsUrls.map(({slug}) => ({ slug }))
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
