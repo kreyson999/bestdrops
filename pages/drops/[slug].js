@@ -17,11 +17,13 @@ function DropItemPage({drop}) {
         <meta property="og:url" content="https://bestdrops.pl/"/>
         <meta property="og:title" content={`BESTDROPS.PL - ${name}!`}/>
         <meta property="og:description" content={`${name} będą dropić już ${getFormattedDate(date)}. Resell będzie wynosił ${resell} PLN, a retail ${retail} PLN.`}/>
+        <meta property="og:image" content={featuredImage.url}/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://bestdrops.pl/"/>
         <meta property="twitter:title" content={`BESTDROPS.PL - ${name}!`}/>
         <meta property="twitter:description" content={`${name} będą dropić już ${getFormattedDate(date)}. Resell będzie wynosił ${resell} PLN, a retail ${retail} PLN.`}/>
+        <meta property="twitter:image" content={featuredImage.url}/>
       </Head>
       <div className="max-w-screen-lg mx-auto px-4 py-8 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
         <div className="relative aspect-square border-2 sm:border-4 bg-white border-blue-600 rounded-2xl overflow-hidden">

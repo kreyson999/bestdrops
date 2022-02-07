@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import { DropItem } from '../components'
-import { getAllDrops, getHotDrops, getTopDrop, REVALIDATE_PAGE_CONTENT } from "../lib/graphCMS"
+import { DropItem, ArticleItem } from '../components'
+import { getAllDrops, getHotDrops, getTopDrop, REVALIDATE_PAGE_CONTENT, getAllArticles } from "../lib/graphCMS"
 
-export default function Home({topDrop, hotDrops, allDrops}) {
+export default function Home({topDrop, hotDrops, allDrops, lastArticles}) {
 
   return (
     <>
@@ -62,12 +62,22 @@ export default function Home({topDrop, hotDrops, allDrops}) {
           })}
         </div>
       </section>
-      {/* <section className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-oswald uppercase text-custom-black font-bold pb-3 z-10">Artykuły</h2>
-        <div className="grid grid-cols-3 gap-6">
-          Coming soon
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl lg:text-4xl font-oswald uppercase text-custom-black font-bold pb-3 z-10">
+          Ostatnie artkuły
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {lastArticles.map((article, index) => {
+            return (
+              <ArticleItem 
+                key={index}
+                article={article}
+                isGrid={true}
+              />
+            )
+          })}
         </div>
-      </section> */}
+      </section>
       <style jsx>{`
         .headerBg {
           background-image: url('/images/bgbestdrops.webp');
@@ -85,11 +95,13 @@ export async function getStaticProps() {
   const topDrop = await getTopDrop()
   const hotDrops = await getHotDrops(4, date)
   const allDrops = await getAllDrops(6, date)
+  const lastArticles = await getAllArticles(6)
   return {
     props: {
       topDrop: topDrop,
       hotDrops: hotDrops,
-      allDrops: allDrops
+      allDrops: allDrops,
+      lastArticles: lastArticles,
     },
     revalidate: REVALIDATE_PAGE_CONTENT,
   }

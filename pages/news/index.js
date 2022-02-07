@@ -66,7 +66,7 @@ export default function Home({upcomingDrops, articles}) {
 export async function getStaticProps() {
   const date = new Date()
   const drops = await (getAllDrops(3, date) || [])
-  const articles = await getAllArticles() || []
+  const articles = await getAllArticles(30) || []
 
   return {
     props: {

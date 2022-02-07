@@ -3,13 +3,13 @@ import Link from "next/link";
 
 import getFormattedDate from "../helpers/getFormattedDate";
 
-const ArticleItem = ({article}) => {
+const ArticleItem = ({article, isGrid}) => {
   const { category, title, featuredImage, publishedAt, slug } = article
   
   return (
     <Link href={`/news/${slug}`}>
-      <a className="flex rounded-xl overflow-hidden shadow-lg">
-        <div className="relative aspect-square xl:aspect-video w-full">
+      <a className={`relative flex bg-custom-black rounded-xl overflow-hidden shadow-lg ${isGrid ? 'flex-col' : ''}`}>
+        <div className={`relative w-full ${isGrid ? 'aspect-video' : 'aspect-square xl:aspect-video'}`}>
           <Image
           src={featuredImage.url}
           alt={title}
@@ -24,7 +24,7 @@ const ArticleItem = ({article}) => {
               <p className="hidden sm:block sm:text-xl text-gray-300">{category.title}</p>
               <p className="block sm:text-xl text-gray-300">{getFormattedDate(publishedAt)}</p>
             </div>
-            <div className="hidden sm:block rounded-lg py-2 px-6 text-center text-xl xl:text-2xl font-bold text-white bg-blue-600 uppercase">
+            <div className={`sm:block rounded-lg py-2 px-6 text-center text-xl xl:text-2xl font-bold text-white bg-blue-600 uppercase ${isGrid ? 'block' : 'hidden'}`}>
               Czytaj
             </div>
           </div>

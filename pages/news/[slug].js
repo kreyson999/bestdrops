@@ -24,11 +24,13 @@ export default function Post({upcomingDrops, article}) {
         <meta property="og:url" content={`https://bestdrops.pl/news/${slug}`}/>
         <meta property="og:title" content={`BESTDROPS.PL - ${title}!`}/>
         <meta property="og:description" content={`Ten artykuł został zaaktualizowany ostatni raz: ${getFormattedDate(publishedAt)}`}/>
+        <meta property="og:image" content={featuredImage.url}/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content={`https://bestdrops.pl/news/${slug}`}/>
         <meta property="twitter:title" content={`BESTDROPS.PL - ${title}!`}/>
         <meta property="twitter:description" content={`Ten artykuł został zaaktualizowany ostatni raz: ${getFormattedDate(publishedAt)}`}/>
+        <meta property="twitter:image" content={featuredImage.url}/>
       </Head>
       <div className="container mx-auto  md:px-0 mt-12 flex flex-col">
         <div className="px-4">
