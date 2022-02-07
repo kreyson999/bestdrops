@@ -1,4 +1,3 @@
-import fs from "fs";
 import { getDropsWithPagination, getAllArticles} from "../lib/graphCMS"
 
 const Sitemap = () => {};
