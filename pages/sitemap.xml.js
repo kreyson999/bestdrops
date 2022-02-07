@@ -9,29 +9,6 @@ export const getServerSideProps = async ({ res }) => {
     production: "https://bestdrops.pl",
   }[process.env.NODE_ENV];
 
-  const staticPages = fs
-    .readdirSync({
-      development: "pages",
-      production: "./",
-    }[process.env.NODE_ENV])
-    .filter((staticPage) => {
-      return ![
-        "_app.js",
-        ".next",
-        "___next_launcher.js",
-        "___vc_bridge.js",
-        "node_modules",
-        "package.json",
-        "_document.js",
-        "404.js",
-        "sitemap.xml.js",
-        "index.js",
-      ].includes(staticPage);
-    })
-    .map((staticPagePath) => {
-      return `${baseUrl}/${staticPagePath}`;
-  });
-
   const dynamicArticleUrls = await getAllArticles(99)
   const dynamicArticlePages = dynamicArticleUrls.map(({slug}) => ({ slug }));
 
@@ -40,18 +17,24 @@ export const getServerSideProps = async ({ res }) => {
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${staticPages
-        .map((url) => {
-          return `
-            <url>
-              <loc>${url}</loc>
-              <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
-              <priority>1.0</priority>
-            </url>
-          `;
-        })
-        .join("")}
+      <url>
+        <loc>https://bestdrops.pl/hotdrops</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
+      <url>
+        <loc>https://bestdrops.pl/drops</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
+      <url>
+        <loc>https://bestdrops.pl/news</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
       ${dynamicArticlePages
         .map(({slug}) => {
           return `
