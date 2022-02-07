@@ -1,8 +1,40 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { DropItem } from '../../components/'
-import { getDropsWithPagination, REVALIDATE_PAGE_CONTENT } from '../../lib/graphCMS'
+import { getDropsWithPagination } from '../../lib/graphCMS'
 
-export default function Drops({allDrops}) {
+export default function Drops() {
+  const [data, setData] = useState([])
+  const [sortedData, setSortedData] = useState([])
+  const [showVerified, setShowVerified] = useState(false)
+  const [showOld, setShowOld] = useState(false)
+  const [sortType, setSortType] = useState('ASC')
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const date = new Date()
+      const data = await getDropsWithPagination(30, showVerified, showOld, date);
+      setData(data)
+    }
+    fetchData()
+  }, [showVerified, showOld])
+
+  useEffect(() => {
+    if (sortType === 'DESC') {
+      const copiedData = [...data]
+      copiedData.sort((a,b) => {
+        return new Date(a.date).getTime() + new Date(b.date).getTime()
+      })
+      setSortedData(copiedData)
+    } else {
+      const copiedData = [...data]
+      copiedData.sort((a,b) => {
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+      })
+      setSortedData(copiedData)
+    }
+  }, [sortType, data])
+
   return (
     <>
       <Head>
@@ -26,19 +58,36 @@ export default function Drops({allDrops}) {
         </header>
       </div>
       <div className='container mx-auto px-4 pt-6 pb-8 md:pt-10 md:pb-16'>
-        <div className="w-full flex justify-between pb-5 items-center">
+        <div className="w-full flex flex-col lg:flex-row justify-between pb-5 items-left">
           <h2 className='text-lg sm:text-xl py-4'>Znajdziesz tutaj wszystkie dropy dostępne na naszej stronie!</h2>
-          {/* <div>
-            <input type="checkbox" id="showOld" />
-            <label htmlFor="showOld" className="ml-1 mr-4">Pokazuj stare</label>
-            <select className="border-2 border-blue-600 rounded-xl px-2 py-2">
-              <option value="date_ASC">Od najnowszych</option>
-              <option value="date_DESC">Od najstarszych</option>
+          <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:items-center">
+            <div>
+              <input 
+              checked={showOld} 
+              onChange={(e) => setShowOld(e.target.checked)} 
+              type="checkbox" 
+              id="showOld" />
+              <label htmlFor="showOld" className="ml-1 mr-4">Pokazuj zakończone</label>
+            </div>
+            <div>
+              <input 
+              checked={showVerified} 
+              onChange={(e) => setShowVerified(e.target.checked)} 
+              type="checkbox" 
+              id="showVerified" />
+              <label htmlFor="showVerified" className="ml-1 mr-4">Pokazuj zweryfikowane</label>
+            </div>
+            <select 
+            value={sortType} 
+            onChange={(e) => setSortType(e.target.value)} 
+            className="border-2 border-blue-600 rounded-xl px-2 py-2 w-fit">
+              <option value="DESC">Od najstarszych</option>
+              <option value="ASC">Od najbliższych</option>
             </select>
-          </div> */}
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {allDrops.map((drop, index) => {
+          {sortedData && sortedData.map((drop, index) => {
             return (
               <DropItem
                 key={index}
@@ -49,17 +98,6 @@ export default function Drops({allDrops}) {
           })}
         </div>
       </div>
-      {/* <div className="container mx-auto px-4 py-8 md:py-16 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {allDrops.map((drop, index) => {
-          return (
-            <DropItem 
-              key={index}
-              drop={drop}
-              isRow={true}
-            />
-          )
-        })}
-      </div> */}
       <style jsx>{`
         .headerBg {
           background-image: url('/images/headers/dropsbg.webp');
@@ -72,13 +110,13 @@ export default function Drops({allDrops}) {
   )
 } 
 
-export async function getStaticProps() {
-  const date = new Date()
-  const allDrops = await getDropsWithPagination(24, date)
-  return {
-    props: {
-      allDrops: allDrops
-    },
-    revalidate: REVALIDATE_PAGE_CONTENT,
-  }
-}
+// export async function getStaticProps() {
+//   const date = new Date()
+//   const allDrops = await getDropsWithPagination(24, date)
+//   return {
+//     props: {
+//       allDrops: allDrops
+//     },
+//     revalidate: REVALIDATE_PAGE_CONTENT,
+//   }
+// }
