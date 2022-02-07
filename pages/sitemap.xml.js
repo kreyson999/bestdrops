@@ -17,10 +17,14 @@ export const getServerSideProps = async ({ res }) => {
     .filter((staticPage) => {
       return ![
         "_app.js",
+        ".next",
+        "___next_launcher.js",
+        "___vc_bridge.js",
+        "node_modules",
+        "package.json",
         "_document.js",
         "404.js",
         "sitemap.xml.js",
-        "hotdrops.js",
         "index.js",
       ].includes(staticPage);
     })
