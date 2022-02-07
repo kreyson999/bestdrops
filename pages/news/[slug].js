@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Script from "next/script";
 
 import { getAllDrops, getAllArticles, getArticleDetails, REVALIDATE_PAGE_CONTENT } from "../../lib/graphCMS";
 import getFormattedDate from "../../helpers/getFormattedDate";
@@ -11,10 +10,6 @@ export default function Post({upcomingDrops, article}) {
   const { title, content, featuredImage, publishedAt, slug, category } = article
   return (
     <>
-      <Script
-      src="https://www.instagram.com/static/bundles/es6/EmbedAsyncLogger.js/aefd565f431f.js"
-      strategy="lazyOnLoad"
-      />
       <Head>
         <title>BESTDROPS.PL - {title}!</title>
         <meta name="title" content={`BESTDROPS.PL - ${title}!`}/>
@@ -95,7 +90,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllArticles()
+  const paths = await getAllArticles(100)
 
   return {
     paths: paths.map(({ slug }) => ({
