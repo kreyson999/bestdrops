@@ -56,7 +56,7 @@ const Navbar = () => {
             </div>
           </button>
         </div>
-        <ul className={`flex sm:space-x-4 ${isNavbarOpen ? 'flex-col sm:flex-row' : 'hidden sm:flex'}`}>
+        <ul onClick={handleOpeningNavbar} className={`flex sm:space-x-4 ${isNavbarOpen ? 'flex-col sm:flex-row' : 'hidden sm:flex'}`}>
           <li>
             <NavLink href={'/hotdrops'}>
               Hot dropy
