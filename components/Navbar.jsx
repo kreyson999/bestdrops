@@ -67,16 +67,6 @@ const Navbar = () => {
               Dropy
             </NavLink>
           </li>
-          <li>
-            <NavLink href={'/news'}>
-              News
-            </NavLink>
-          </li>
-          {/* <li>
-            <NavLink href={'/influ'}>
-              Influ
-            </NavLink>
-          </li> */}
         </ul>
       </div>
     </nav>

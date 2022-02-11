@@ -1,4 +1,4 @@
-import { getDropsWithPagination, getAllArticles} from "../lib/graphCMS"
+import { getDropsWithPagination } from "../lib/graphCMS"
 
 const Sitemap = () => {};
 
@@ -7,9 +7,6 @@ export const getServerSideProps = async ({ res }) => {
     development: "http://localhost:3000",
     production: "https://bestdrops.pl",
   }[process.env.NODE_ENV];
-
-  const dynamicArticleUrls = await getAllArticles(99)
-  const dynamicArticlePages = dynamicArticleUrls.map(({slug}) => ({ slug }));
 
   const date = new Date()
   const dynamicDropsUrls = await getDropsWithPagination(100, false, true, date)
@@ -29,24 +26,6 @@ export const getServerSideProps = async ({ res }) => {
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
       </url>
-      <url>
-        <loc>https://bestdrops.pl/news</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-      </url>
-      ${dynamicArticlePages
-        .map(({slug}) => {
-          return `
-            <url>
-              <loc>${baseUrl}/news/${slug}</loc>
-              <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
-              <priority>0.8</priority>
-            </url>
-          `;
-        })
-        .join("")}
       ${dynamicDropsPages
         .map(({slug}) => {
           return `
