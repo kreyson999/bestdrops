@@ -13,11 +13,11 @@ export default async function email(req, res) {
 
   try {
     const emailRes = await transporter.sendMail({
-      from: email,
+      from: `"BESTDROPS.PL Support" <${email}>`,
       to: 'contact@bestdrops.pl, kamil@bestdrops.pl, mizer@bestdrops.pl',
-      subject: `BESTDROPS.PL - Support ${name}`,
-      html: `<p>Masz nową wiadomość z formularza na stronie BESTDROPS.PL</p><br>
-      <p><strong>Imię: </strong> ${name} </p><br>
+      subject: `Nowa wiadomość od: ${name}`,
+      html: `<p>Masz nową wiadomość z formularza na stronie BESTDROPS.PL</p>
+      <p><strong>Imię: </strong> ${name} </p>
       <p><strong>E-mail użytkownika: </strong> ${email} </p><br>
       <p><strong>Wiadomość: </strong> ${message} </p><br>
       `,

@@ -7,6 +7,7 @@ import { getDropsWithPagination, REVALIDATE_PAGE_CONTENT } from "../lib/graphCMS
 
 const ContactPage = ({drops}) => {
   const [currentUser, setCurrentUser] = useState('Kamil');
+  const [isSending, setIsSending] = useState(false);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const users = {
@@ -32,6 +33,7 @@ const ContactPage = ({drops}) => {
   }
 
   const onSubmit = async (data) => {
+    if (isSending) return
     try {
       const result = await fetch('/api/email', {
         method: 'POST',
@@ -40,6 +42,7 @@ const ContactPage = ({drops}) => {
         },
         body: JSON.stringify(data)
       })
+      .then((res) => setIsSending(false))
       console.log(result)
     } catch (error) {
       console.log(error)
@@ -67,7 +70,7 @@ const ContactPage = ({drops}) => {
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 pt-12 md:pt-12 pb-16 md:pb-24 lg:pt-16 lg:pb-32 px-4 gap-y-6">
         <div className="lg:col-span-6">
           <h1 className="text-3xl lg:text-3xl uppercase text-custom-black font-bold pb-3 z-10">Formularz kontaktowy</h1>
-          <form onClick={handleSubmit(onSubmit)} className="space-y-2 flex flex-col border-b border-custom-black pb-4 ">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 flex flex-col border-b border-custom-black pb-4 ">
             <div>
               <input 
               {...register("name", { required: true, maxLength:16, minLength:3 })}
@@ -100,7 +103,7 @@ const ContactPage = ({drops}) => {
               </textarea>
               <span className="text-sm text-red-700">{errors.message && "Wiadomość musi mieć co najmniej 12 liter i maksymalnie 500."}</span>
             </div>
-            <button className="self-end bg-blue-500 px-8 py-2 text-xl rounded-lg text-white w-fit hover:opacity-80">Wyślij</button>
+            <button disabled={isSending ? true : false} className="self-end bg-blue-500 px-8 py-2 text-xl rounded-lg text-white w-fit hover:opacity-80">Wyślij</button>
           </form>
           <div className="mt-4 grid grid-cols-3 space-x-2">
             <ContactUser text={'Kamil'} isActive={currentUser === 'Kamil'} onClick={handleChangingCurrentUser}/>
