@@ -35,6 +35,7 @@ const ContactPage = ({drops}) => {
   const onSubmit = async (data) => {
     if (isSending) return
     try {
+      setIsSending(true)
       const result = await fetch('/api/email', {
         method: 'POST',
         headers: {
