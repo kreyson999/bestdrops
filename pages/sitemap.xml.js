@@ -26,6 +26,12 @@ export const getServerSideProps = async ({ res }) => {
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
       </url>
+      <url>
+        <loc>https://bestdrops.pl/contact</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
       ${dynamicDropsPages
         .map(({slug}) => {
           return `

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -7,6 +8,11 @@ const Footer = () => {
         <div>
           <p className="font-bold">&copy; 2022 BESTDROPS.PL</p>
           <p className="text-gray-300">Zdjęcia użyte na stronie nie są naszego autorstwa i należą do ich prawdziwych właścicieli!</p>
+          <Link href={'/contact'}>
+            <a className="text-blue-500 font-bold">
+              Kontakt z nami
+            </a>
+          </Link>
         </div>
         <div className="space-x-2 flex">
           <a className="w-9 h-9 block" aria-label="Nasz instagram" href="https://www.instagram.com/bestdrops.pl/">
