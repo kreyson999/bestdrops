@@ -22,11 +22,11 @@ export default async function email(req, res) {
       <p><strong>Wiadomość: </strong> ${message} </p><br>
       `,
     });
-
+    console.log(emailRes)
     console.log('Message Sent');
+    res.status(200).json(emailRes);
   } catch (err) {
     console.log(err);
+    res.status(404).json(err);
   }
-
-  res.status(200).json(req.body);
 }

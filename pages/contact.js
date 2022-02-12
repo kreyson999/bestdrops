@@ -40,6 +40,7 @@ const ContactPage = ({drops}) => {
         },
         body: JSON.stringify(data)
       })
+      console.log(result)
     } catch (error) {
       console.log(error)
     }
