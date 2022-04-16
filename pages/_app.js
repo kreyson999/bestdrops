@@ -36,11 +36,9 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
-      <Navbar/>
-      <div className='grow pt-14'>
+      <div className='grow bg-bg-color'>
         <Component {...pageProps} />
       </div>
-      <Footer/>
     </>
   )
 }
