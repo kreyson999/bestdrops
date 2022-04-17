@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
-      <div className='grow bg-bg-color'>
+      <div className='grow bg-dark-blue'>
         <Component {...pageProps} />
       </div>
     </>

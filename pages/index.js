@@ -21,7 +21,7 @@ export default function Home() {
         <meta property="twitter:title" content="BESTDROPS.PL - Wszystkie dropy w jednym miejscu!"/>
         <meta property="twitter:description" content="Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!"/>
       </Head>
-      <header className='relative flex flex-col md:grid md:grid-cols-2 justify-between min-h-[100vh] max-w-[1920px] mx-auto'>
+      <header className='bg-dark-gray relative flex flex-col md:grid md:grid-cols-2 justify-between min-h-[100vh] max-w-[1920px] mx-auto'>
         <div className='flex flex-col md:justify-center md:items-end'>
           <div className='md:hidden flex items-center pt-1.5 px-2'>
             <Image
@@ -75,6 +75,7 @@ export default function Home() {
           </label>
           <div className='hidden max-w-[400px] lg:max-w-[500px] xl:max-w-[550px] 2xl:max-w-[600px] md:grid absolute left-16 lg:left-24 xl:left-32 z-30'>
             <Image
+            priority
             src="/images/but.png"
             width={600}
             height={600}
@@ -133,6 +134,7 @@ export default function Home() {
           </div>
           <div className='md:hidden max-w-[600px] grid pl-4 pr-4 mt-4 before:absolute before:left-0 before:bottom-0 before:w-[100vw] before:h-64 before:bg-blue'>
             <Image
+            priority
             src="/images/but.png"
             width={600}
             height={600}

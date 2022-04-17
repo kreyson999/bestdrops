@@ -6,7 +6,7 @@ const DropItem = () => {
   return (
     <Link href={`/drop`}>
       <a className='mx-auto px-4'>
-        <div className='grid grid-cols-2 gap-x-2 max-w-[600px] md:max-w-[800px]'>
+        <div className='grid grid-cols-2 gap-x-2 max-w-[600px] md:max-w-[800px] 2xl:max-w-[900px]'>
           <div className='grid max-w-[200px] md:max-w-[250px] 2xl:max-w-[300px] '>
             <Image
               src="/images/but.png"
