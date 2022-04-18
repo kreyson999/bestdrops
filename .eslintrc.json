@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",

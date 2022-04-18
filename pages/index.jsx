@@ -197,15 +197,11 @@ export default function Home({ hotDrops, drops }) {
       </header>
       <section className="py-6 space-y-6 py-8 md:space-y-8 xl:space-y-10 xl:py-10 flex flex-col">
         {drops.map((drop, index) => (
-          <>
-            <DropItem {...drop} key={drop.name} />
-            {index !== drops.length - 1 && (
-              <div className="flex space-x-16">
-                <hr className="border-t border-white w-full" />
-                <hr className="border-t border-white w-full" />
-              </div>
-            )}
-          </>
+          <DropItem
+            {...drop}
+            key={drop.slug}
+            isLast={index === drops.length - 1}
+          />
         ))}
       </section>
       <Footer />

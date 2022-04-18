@@ -37,12 +37,12 @@ function Footer() {
         </div>
         <hr className="grow border-t border-white" />
       </div>
-      <div className="p-4 flex flex-col">
-        <div className="self-center">
+      <div className="p-4 flex flex-col md:w-full md:justify-between md:flex-row max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+        <div className="self-center md:order-last">
           <Button text="Poprzednie dropy" href="/" />
         </div>
         <div className="mt-4">
-          <p className="">
+          <p className="md:w-96">
             Zdjęcia użyte na stronie nie są naszego autorstwa i należa do ich
             prawnych właścicieli.
           </p>
