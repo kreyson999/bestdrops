@@ -7,8 +7,7 @@ import { SeoHead, Price, Button, Footer } from "../../components";
 import Navbar from "../../components/Navbar";
 
 
-function DropItemPage({drop}) {
-  const { date, description, featuredImage, linkToDrop, linkToGoat, linkToStockX, name, resell, retail, slug } = drop
+function DropItemPage({date, description, featuredImage, linkToDrop, linkToGoat, linkToStockX, name, resell, retail, slug}) {
 
   const seoObject = {
     title: name,
@@ -38,10 +37,10 @@ function DropItemPage({drop}) {
             <Price title="Resell" price={1500}/>
           </div>
         </div>
-        <Button text="Przejdź do dropu" href={linkToDrop}/>
+        <Button dontPrerender text="Przejdź do dropu" href={linkToDrop}/>
         <div className="grid grid-cols-2 gap-x-2 mt-2">
-          <Button text="StockX" href={linkToStockX}/>
-          <Button text="Goat" href={linkToGoat}/>
+          <Button dontPrerender text="StockX" href={linkToStockX}/>
+          <Button dontPrerender text="Goat" href={linkToGoat}/>
         </div>
       </section>
       <Footer/>
@@ -55,7 +54,7 @@ export async function getStaticProps({params}) {
   const drop = await getDropDetails(params.slug)
   return {
     props: {
-      drop: drop
+      ...drop
     },
     revalidate: REVALIDATE_PAGE_CONTENT,
   }

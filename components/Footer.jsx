@@ -31,7 +31,7 @@ const Footer = () => {
       </div>
       <div className='p-4 flex flex-col'>
         <div className="self-center">
-          <Button text="Poprzednie dropy" href="/drops"/>
+          <Button text="Poprzednie dropy" href="/"/>
         </div>
         <div className='mt-4'>
           <p className=''>Zdjęcia użyte na stronie nie są naszego autorstwa i należa do ich prawnych właścicieli.</p>
