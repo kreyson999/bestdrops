@@ -1,9 +1,12 @@
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
-const Price = ({title, price, tooltipText}) => {
+function Price({ title, price }) {
   return (
     <div className="flex items-center text-xl">
-      <span>{title}: <span className="font-semibold text-blue">{price}</span> zł</span>
+      <span>
+        {title}: <span className="font-semibold text-blue">{price}</span> zł
+      </span>
       <div className="grid ml-2 w-6 h-6">
         <Image
           src="/icons/questionmark.svg"
@@ -15,5 +18,5 @@ const Price = ({title, price, tooltipText}) => {
     </div>
   );
 }
- 
+
 export default Price;
