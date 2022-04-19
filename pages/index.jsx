@@ -86,6 +86,7 @@ export default function Home({ hotDrops, drops }) {
               src={hotDrops[0].featuredImage.url}
               width={600}
               height={600}
+              className="object-cover"
               alt="But"
             />
           </div>
