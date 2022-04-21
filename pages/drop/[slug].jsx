@@ -10,6 +10,7 @@ import getFormattedDate from "../../helpers/getFormattedDate";
 
 import { SeoHead, Price, Button, Footer } from "../../components";
 import Navbar from "../../components/Navbar";
+import { resellTooltip, retailTooltip } from "../../helpers/constants";
 
 function DropItemPage({
   date,
@@ -54,17 +55,9 @@ function DropItemPage({
               {getFormattedDate(date)}
             </p>
           </div>
-          <div className="mt-3 md:mt-0 flex flex-col items-end space-y-0.5 lg:space-y-1.5 md:space-y-1">
-            <Price
-              title="Retail"
-              price={retail}
-              toolTip="Retail to kwota, którą musimy zapłacić, aby kupić ten przedmiot u oryginalnego producenta."
-            />
-            <Price
-              title="Resell"
-              price={resell}
-              toolTip="Resell to szacowana kwota, jaką ktoś jest w stanie zapłacić za ten przedmiot."
-            />
+          <div className="mt-3 md:mt-0 flex flex-col items-end space-y-0.5 lg:space-y-1.5 md:space-y-1 text-xl md:text-2xl lg:text-[1.7rem] xl:text-3xl">
+            <Price title="Retail" price={retail} toolTip={retailTooltip} />
+            <Price title="Resell" price={resell} toolTip={resellTooltip} />
           </div>
         </div>
         {linkToDrop && (
