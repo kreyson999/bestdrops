@@ -21,7 +21,7 @@ export default function Home({ hotDrops, drops }) {
   return (
     <>
       <SeoHead {...seoObject} />
-      <header className="before:absolute before:w-full before:h-1/3 before:bg-blue before:left-0 before:top-0">
+      <header className="relative z-0 before:absolute before:w-full before:h-1/3 before:bg-blue before:left-0 before:top-0 md:before:w-1/4 md:before:h-full">
         <nav className="max-w-screen-xl mx-auto relative z-10 flex items-center justify-between px-4 pt-4">
           <div className="flex items-center">
             <div className="grid w-12">
@@ -34,17 +34,24 @@ export default function Home({ hotDrops, drops }) {
             </div>
             <h1 className="ml-2 font-bold uppercase text-2xl">Hot dropy</h1>
           </div>
-          <button type="button" className="w-8 h-8">
-            <Image
-              src="/icons/search.svg"
-              width={48}
-              height={48}
-              alt="Ikona wyszukaj"
+          <div className="relative flex md:before:absolute md:before:w-full md:before:border-t md:before:-bottom-0.5">
+            <input
+              type="text"
+              placeholder="Szukaj"
+              className="hidden md:block bg-transparent placeholder:text-white text-light-blue text-lg outline-none"
             />
-          </button>
+            <button type="button" className="grid w-8 h-8 md:w-7 md:h-7">
+              <Image
+                src="/icons/search.svg"
+                width={48}
+                height={48}
+                alt="Ikona wyszukaj"
+              />
+            </button>
+          </div>
         </nav>
-        <div className="max-w-screen-xl mx-auto flex flex-col">
-          <div className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 px-1.5 py-1.5 border-2 border-light-blue">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:grid md:grid-cols-3 md:my-4 md:gap-x-8">
+          <div className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
             <Image
               src="/images/but.png"
               width={500}
@@ -52,25 +59,27 @@ export default function Home({ hotDrops, drops }) {
               alt="Ikona wyszukaj"
             />
           </div>
-          <div className="text-right mx-4">
-            <h2 className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] text-light-blue">
-              Air Jordan 2 x union grey fog
-            </h2>
-            <span className="text-xl font-extralight">
-              {getFormattedDate(hotDrops[0].date)}
-            </span>
-          </div>
-          <div className="mx-4 flex flex-col items-end mt-4 text-2xl">
-            <Price
-              title="Retail"
-              price={hotDrops[0].retail}
-              toolTip={retailTooltip}
-            />
-            <Price
-              title="Resell"
-              price={hotDrops[0].resell}
-              toolTip={resellTooltip}
-            />
+          <div className="flex flex-col justify-between">
+            <div className="text-right mx-4 md:mx-0">
+              <h2 className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] text-light-blue">
+                Air Jordan 2 x union grey fog
+              </h2>
+              <span className="text-xl font-extralight">
+                {getFormattedDate(hotDrops[0].date)}
+              </span>
+            </div>
+            <div className="mx-4 flex flex-col items-end mt-4 text-2xl md:mx-0">
+              <Price
+                title="Retail"
+                price={hotDrops[0].retail}
+                toolTip={retailTooltip}
+              />
+              <Price
+                title="Resell"
+                price={hotDrops[0].resell}
+                toolTip={resellTooltip}
+              />
+            </div>
           </div>
         </div>
         <div className="flex items-center mt-6">
