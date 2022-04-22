@@ -1,8 +1,7 @@
 import React from "react";
 
-import Image from "next/image";
-
 import Button from "./Button";
+import SocialIcon from "./SocialIcon";
 
 function Footer() {
   return (
@@ -10,30 +9,16 @@ function Footer() {
       <div className="w-full flex space-x-4 items-center mb-1">
         <hr className="grow border-t border-white" />
         <div className="flex space-x-2">
-          <a
-            href="https://www.instagram.com/bestdrops.pl/"
-            className="grid w-8 h-8"
-          >
-            <Image
-              src="/icons/instagram.svg"
-              width={36}
-              height={36}
-              className="object-cover"
-              alt="Ikona instagram.com"
-            />
-          </a>
-          <a
-            href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL"
-            className="grid w-8 h-8"
-          >
-            <Image
-              src="/icons/tiktok.svg"
-              width={36}
-              height={36}
-              className="object-cover"
-              alt="Ikona tiktok.com"
-            />
-          </a>
+          <SocialIcon
+            url="https://www.instagram.com/bestdrops.pl/"
+            icon="/icons/instagram.svg"
+            alt="Ikona instagram.com"
+          />
+          <SocialIcon
+            url="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL"
+            icon="/icons/tiktok.svg"
+            alt="Ikona tiktok.com"
+          />
         </div>
         <hr className="grow border-t border-white" />
       </div>
