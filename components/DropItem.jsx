@@ -8,7 +8,7 @@ import Price from "./Price";
 function DropItem({ name, slug, featuredImage, resell, retail }) {
   return (
     <Link href={`/drop/${slug}`}>
-      <a className="border-2 border-light-blue p-1.5 lg:p-2 flex space-x-2">
+      <a className="border-2 border-light-blue p-1.5 lg:p-2 flex space-x-2 transition duration-500 transform hover:-translate-y-1">
         <div className="flex-none grid col-span-5 h-[128px] w-[128px] md:w-[165px] md:h-[165px]">
           <Image
             src={featuredImage.url}

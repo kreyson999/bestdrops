@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SocialIcon from "./SocialIcon";
+import SearchBar from "./SearchBar";
 
 function Navbar({ title }) {
   return (
@@ -40,20 +41,7 @@ function Navbar({ title }) {
             {title}
           </span>
         </div>
-        <div className="relative flex items-center md:before:absolute md:before:left-0 md:before:-bottom-0.5 md:before:w-full md:before:border-b">
-          <input
-            placeholder="Szukaj"
-            className="hidden md:block bg-transparent placeholder:text-white text-light-blue text-lg foucs:outline-none"
-          />
-          <div className="grid w-8 h-8 md:w-7 md:h-7">
-            <Image
-              src="/icons/search.svg"
-              width={64}
-              height={64}
-              alt="Ikona Szukaj"
-            />
-          </div>
-        </div>
+        <SearchBar />
       </div>
     </nav>
   );

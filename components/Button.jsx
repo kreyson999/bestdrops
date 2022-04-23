@@ -14,13 +14,13 @@ function Button({ text, href = "", dontPrerender = false }) {
       {dontPrerender ? (
         <a
           href={href}
-          className="block relative w-full h-full z-50 font-semibold uppercase text-lg"
+          className="block relative w-full h-full z-20 font-semibold uppercase text-lg"
         >
           {text}
         </a>
       ) : (
         <Link href={href}>
-          <a className="block relative w-full h-full z-50 font-semibold uppercase text-lg">
+          <a className="block relative w-full h-full z-20 font-semibold uppercase text-lg">
             {text}
           </a>
         </Link>

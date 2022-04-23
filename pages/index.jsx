@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
   getHotDrops,
@@ -12,6 +14,7 @@ import {
   DropItem,
   HotDropItem,
   Price,
+  SearchBar,
   SeoHead,
   SocialIcon,
 } from "../components";
@@ -61,38 +64,28 @@ export default function Home({ hotDrops, drops }) {
               Hot dropy
             </span>
           </div>
-          <div className="relative flex md:before:absolute md:before:w-full md:before:border-t md:before:-bottom-0.5">
-            <input
-              type="text"
-              placeholder="Szukaj"
-              className="hidden md:block bg-transparent placeholder:text-white text-light-blue text-lg outline-none"
-            />
-            <button type="button" className="grid w-8 h-8 md:w-7 md:h-7">
-              <Image
-                src="/icons/search.svg"
-                width={64}
-                height={64}
-                alt="Ikona wyszukaj"
-              />
-            </button>
-          </div>
+          <SearchBar />
         </nav>
         <div className="max-w-screen-xl mx-auto flex flex-col md:grid md:grid-cols-3 md:my-4 md:gap-x-4 lg:gap-x-6">
-          <div className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
-            <Image
-              src={hotDrops[currentHotDrop].featuredImage.url}
-              width={500}
-              height={500}
-              className="object-cover"
-              alt={`Wygląd buta o nazwie ${hotDrops[currentHotDrop].name}`}
-              priority
-            />
-          </div>
+          <Link href={`/drop/${hotDrops[currentHotDrop].slug}`}>
+            <a className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
+              <Image
+                src={hotDrops[currentHotDrop].featuredImage.url}
+                width={500}
+                height={500}
+                className="object-cover"
+                alt={`Wygląd buta o nazwie ${hotDrops[currentHotDrop].name}`}
+                priority
+              />
+            </a>
+          </Link>
           <div className="flex flex-col justify-between md:my-6">
             <div className="text-right mx-4 md:mx-0">
-              <h2 className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] lg:text-5xl text-light-blue line-clamp-4">
-                {hotDrops[currentHotDrop].name}
-              </h2>
+              <Link href={`/drop/${hotDrops[currentHotDrop].slug}`}>
+                <a className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] lg:text-5xl text-light-blue hover:text-white line-clamp-4">
+                  {hotDrops[currentHotDrop].name}
+                </a>
+              </Link>
               <span className="text-xl lg:text-2xl font-extralight">
                 {getFormattedDate(hotDrops[currentHotDrop].date)}
               </span>
@@ -116,12 +109,18 @@ export default function Home({ hotDrops, drops }) {
             ))}
           </div>
         </div>
+        {/* Mobile Circles */}
         <div className="md:relative md:z-50 flex items-center mt-6 md:space-x-96">
           <hr className="grow border-t" />
           <div className="md:hidden flex mx-4 space-x-1.5">
-            <div className="w-3 h-3 rounded-full bg-blue" />
-            <div className="w-3 h-3 rounded-full bg-blue-opacity" />
-            <div className="w-3 h-3 rounded-full bg-blue-opacity" />
+            {hotDrops.map((drop, index) => (
+              <div
+                key={drop.name}
+                className={`w-3 h-3 rounded-full ${
+                  index === currentHotDrop ? "bg-blue" : "bg-blue-opacity"
+                }`}
+              />
+            ))}
           </div>
           <hr className="grow border-t" />
         </div>
