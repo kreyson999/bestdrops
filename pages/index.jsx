@@ -70,8 +70,8 @@ export default function Home({ hotDrops, drops }) {
             <button type="button" className="grid w-8 h-8 md:w-7 md:h-7">
               <Image
                 src="/icons/search.svg"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 alt="Ikona wyszukaj"
               />
             </button>

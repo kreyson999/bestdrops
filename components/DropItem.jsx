@@ -12,8 +12,8 @@ function DropItem({ name, slug, featuredImage, resell, retail }) {
         <div className="flex-none grid col-span-5 h-[128px] w-[128px] md:w-[165px] md:h-[165px]">
           <Image
             src={featuredImage.url}
-            width={165}
-            height={165}
+            width={256}
+            height={256}
             alt={`Wygląd buta o nazwie ${name}`}
             className="object-cover"
           />
