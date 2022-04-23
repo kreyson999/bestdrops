@@ -13,9 +13,9 @@ function HotDropItem({ name, featuredImage }) {
           className="rounded-lg object-cover"
         />
       </div>
-      <span className="text-xl lg:text-2xl text-right line-clamp-3 overflow-hidden">
+      <h2 className="text-xl lg:text-2xl text-right line-clamp-3 overflow-hidden">
         {name}
-      </span>
+      </h2>
     </div>
   );
 }

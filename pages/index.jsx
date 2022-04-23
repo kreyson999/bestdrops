@@ -21,9 +21,9 @@ export default function Home({ hotDrops, drops }) {
   const [currentHotDrop] = useState(0);
 
   const seoObject = {
-    title: "Wszystkie dropy w jednym miejscu!",
+    title: "BESTDROPS.PL",
     url: `https://bestdrops.pl/`,
-    description: `Na naszej stronie możesz sprawdzić najbliżesze dropy, na których możesz zarobić oraz przeczytać o streetwearze w Polsce!`,
+    description: `Na naszej stronie możesz sprawdzić najbliższe premiery modowe, na których możesz zarobić pieniądze!`,
   };
 
   return (

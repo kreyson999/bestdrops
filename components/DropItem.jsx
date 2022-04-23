@@ -19,9 +19,9 @@ function DropItem({ name, slug, featuredImage, resell, retail }) {
           />
         </div>
         <div className="grow flex flex-col text-right items-end justify-between">
-          <span className="font-bold uppercase text-light-blue md:text-lg lg:text-xl line-clamp-3">
+          <h3 className="font-bold uppercase text-light-blue md:text-lg lg:text-xl line-clamp-3">
             {name}
-          </span>
+          </h3>
           <div className="flex flex-col items-end md:text-lg xl:text-xl">
             <Price title="Retail" price={retail} />
             <Price title="Resell" price={resell} />

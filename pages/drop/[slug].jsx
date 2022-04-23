@@ -28,14 +28,16 @@ function DropItemPage({
     title: name,
     url: `https://bestdrops.pl/drop/${slug}`,
     image: featuredImage.url,
-    description: `Opis do zrobienia na pozniej buta`,
+    description: `${name} będzie dropił już ${getFormattedDate(
+      date
+    )}. Cena wyniesie ${retail} zł, a kwota odsprzedaży ${resell} zł.`,
   };
 
   return (
     <>
       <SeoHead {...seoObject} />
       <Navbar title="Drop" />
-      <section className="mx-auto max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl p-4 md:py-8 lg:py-12 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
+      <article className="mx-auto max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl p-4 md:py-8 lg:py-12 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
         <div className="max-w-[500px] mx-auto border border-light-blue p-1.5 grid">
           <Image
             priority
@@ -75,7 +77,7 @@ function DropItemPage({
             )}
           </div>
         </div>
-      </section>
+      </article>
     </>
   );
 }

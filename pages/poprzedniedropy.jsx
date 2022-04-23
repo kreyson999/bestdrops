@@ -10,7 +10,7 @@ function PoprzednieDropy({ drops }) {
   const seoObject = {
     title: "Poprzednie Dropy",
     url: `https://bestdrops.pl/poprzedniedropy`,
-    description: `Opis do zrobienia na pozniej buta`,
+    description: "Lista przedmiotów, które niedawno miały swoją premierę.",
   };
 
   return (

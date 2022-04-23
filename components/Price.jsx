@@ -5,9 +5,9 @@ import Image from "next/image";
 function Price({ title, price, toolTip }) {
   return (
     <div className="flex items-center">
-      <span id={title}>
+      <h4 id={title}>
         {title}: <span className="font-semibold text-blue">{price}</span> zł
-      </span>
+      </h4>
       {toolTip && (
         <label
           className="grid ml-2 xl:ml-3 w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
