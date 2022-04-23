@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import {
@@ -10,7 +10,6 @@ import getFormattedDate from "../helpers/getFormattedDate";
 
 import {
   DropItem,
-  Footer,
   HotDropItem,
   Price,
   SeoHead,
@@ -19,6 +18,8 @@ import {
 import { resellTooltip, retailTooltip } from "../helpers/constants";
 
 export default function Home({ hotDrops, drops }) {
+  const [currentHotDrop] = useState(0);
+
   const seoObject = {
     title: "Wszystkie dropy w jednym miejscu!",
     url: `https://bestdrops.pl/`,
@@ -38,6 +39,7 @@ export default function Home({ hotDrops, drops }) {
                   width={100.05}
                   height={128}
                   alt="Logo naszego serwisu"
+                  priority
                 />
               </div>
               <hr className="hidden 2xl:block border-l border-white h-32 mt-4" />
@@ -55,9 +57,9 @@ export default function Home({ hotDrops, drops }) {
               </div>
               <hr className="hidden 2xl:block border-l border-white h-24" />
             </div>
-            <h1 className="ml-2 2xl:ml-0 font-bold uppercase text-2xl">
+            <span className="ml-2 2xl:ml-0 font-bold uppercase text-2xl">
               Hot dropy
-            </h1>
+            </span>
           </div>
           <div className="relative flex md:before:absolute md:before:w-full md:before:border-t md:before:-bottom-0.5">
             <input
@@ -78,30 +80,32 @@ export default function Home({ hotDrops, drops }) {
         <div className="max-w-screen-xl mx-auto flex flex-col md:grid md:grid-cols-3 md:my-4 md:gap-x-4 lg:gap-x-6">
           <div className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
             <Image
-              src="/images/but.png"
+              src={hotDrops[currentHotDrop].featuredImage.url}
               width={500}
               height={500}
-              alt={`Wygląd buta o nazwie ${hotDrops[0].name}`}
+              className="object-cover"
+              alt={`Wygląd buta o nazwie ${hotDrops[currentHotDrop].name}`}
+              priority
             />
           </div>
           <div className="flex flex-col justify-between md:my-6">
             <div className="text-right mx-4 md:mx-0">
               <h2 className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] lg:text-5xl text-light-blue line-clamp-4">
-                Air Jordan 2 x union grey fog
+                {hotDrops[currentHotDrop].name}
               </h2>
               <span className="text-xl lg:text-2xl font-extralight">
-                {getFormattedDate(hotDrops[0].date)}
+                {getFormattedDate(hotDrops[currentHotDrop].date)}
               </span>
             </div>
             <div className="mx-4 flex flex-col items-end mt-4 text-2xl lg:text-[1.7rem] md:mx-0 md:space-y-1">
               <Price
                 title="Retail"
-                price={hotDrops[0].retail}
+                price={hotDrops[currentHotDrop].retail}
                 toolTip={retailTooltip}
               />
               <Price
                 title="Resell"
-                price={hotDrops[0].resell}
+                price={hotDrops[currentHotDrop].resell}
                 toolTip={resellTooltip}
               />
             </div>
@@ -132,7 +136,6 @@ export default function Home({ hotDrops, drops }) {
           ))}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

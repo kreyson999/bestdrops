@@ -23,7 +23,8 @@ a {
   box-sizing: border-box;
 }
 #__next {
-  background-color: rgb(231, 231, 231);
+  color: white;
+  background-color: #001F31;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

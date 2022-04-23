@@ -8,7 +8,7 @@ import {
 } from "../../lib/graphCMS";
 import getFormattedDate from "../../helpers/getFormattedDate";
 
-import { SeoHead, Price, Button, Footer } from "../../components";
+import { SeoHead, Price, Button } from "../../components";
 import Navbar from "../../components/Navbar";
 import { resellTooltip, retailTooltip } from "../../helpers/constants";
 
@@ -76,7 +76,6 @@ function DropItemPage({
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

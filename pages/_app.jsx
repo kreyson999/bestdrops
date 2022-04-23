@@ -5,6 +5,7 @@ import Script from "next/script";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import * as ga from "../lib/google_analytics";
+import { Footer } from "../components";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -41,6 +42,7 @@ function MyApp({ Component, pageProps }) {
       <div className="grow text-white bg-dark-blue">
         <Component {...pageProps} />
       </div>
+      <Footer />
     </>
   );
 }
