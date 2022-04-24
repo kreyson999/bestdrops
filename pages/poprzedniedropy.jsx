@@ -19,7 +19,7 @@ function PoprzednieDropy({ drops }) {
       <Navbar title="Dropy" />
       <section className="max-w-screen-xl mx-auto px-4 mt-8 flex flex-col mb-8">
         <h1 className="text-xl lg:text-2xl text-light-blue font-extralight uppercase mb-4">
-          Nadchodzące dropy:
+          Poprzednie dropy:
         </h1>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
           {drops.map((drop) => (

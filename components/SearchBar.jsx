@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-bind */
 import React, { useEffect, useCallback, useRef, useState } from "react";
 import Image from "next/image";
@@ -5,8 +6,10 @@ import throttle from "lodash/throttle";
 
 import SearchBarItem from "./SearchBarItem";
 import { getMatchingDrops } from "../lib/graphCMS";
+import useWindowSize from "../hooks/useWindowSize";
 
 function SearchBar() {
+  const [windowWidth] = useWindowSize();
   const inputRef = useRef(null);
   const [isSearching, setIsSearching] = useState(false);
   const [matchingDrops, setMatchingDrops] = useState([]);
@@ -19,6 +22,11 @@ function SearchBar() {
       setMatchingDrops([]);
     }
   };
+
+  // const onBlur = () => {
+  //   if (windowWidth < 768) return;
+  //   setIsSearching(false);
+  // };
 
   const handleOpenSearch = () => {
     setIsSearching(true);
@@ -41,38 +49,68 @@ function SearchBar() {
     return () => {
       handleOnChange.cancel();
     };
-  });
+  }, [handleOnChange]);
 
   useEffect(() => {
     if (isSearching) {
-      // eslint-disable-next-line no-undef
       document.body.style.overflowY = "hidden";
-      // eslint-disable-next-line no-undef
     } else {
-      // eslint-disable-next-line no-undef
       document.body.style.overflowY = "auto";
     }
   }, [isSearching]);
 
   return (
-    <div
-      className={`flex md:relative ${
-        isSearching
-          ? "fixed z-50 bottom-0 left-0 w-full h-full bg-dark-blue flex-col"
-          : "items-center"
-      } ${
-        matchingDrops.length > 0
-          ? ""
-          : "md:before:absolute md:before:left-0 md:before:-bottom-0.5 md:before:w-full md:before:border-b"
-      }`}
-    >
-      <div
+    <div className="flex flex-col relative z-50">
+      <button type="button" onClick={handleOpenSearch} className="grid w-9 h-9">
+        <Image
+          src="/icons/search.svg"
+          width={64}
+          height={64}
+          alt="Ikona lupy"
+        />
+      </button>
+      {/* Mobile Search Page */}
+      {isSearching && (
+        <div className="fixed flex flex-col z-50 top-0 left-0 w-full h-full bg-dark-blue">
+          <div className="bg-blue flex items-center justify-between px-4 py-5 space-x-4">
+            <input
+              onChange={handleOnChange}
+              placeholder="Szukaj"
+              className="w-full text-xl bg-transparent text-white placeholder:text-white focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={handleCloseSearch}
+              className="grid w-7 h-7 flex-none"
+            >
+              <Image
+                src="/icons/close.svg"
+                width={64}
+                height={64}
+                alt="Ikona zamknij"
+              />
+            </button>
+          </div>
+          <div className="relative z-[999] flex flex-col overflow-y-scroll">
+            {matchingDrops.map((drop, index) => (
+              <SearchBarItem
+                index={index}
+                key={drop.name}
+                onClick={handleClearState}
+                {...drop}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      {/* <div
         className={`${
           isSearching ? "flex bg-blue px-4 py-4" : ""
         } md:flex md:px-0 md:py-0`}
       >
         <input
           ref={inputRef}
+          onBlur={onBlur}
           onChange={handleOnChange}
           placeholder="Szukaj"
           className={`${
@@ -96,7 +134,7 @@ function SearchBar() {
       </div>
       <div
         className={`${
-          matchingDrops.length > 0 ? "flex" : "hidden"
+          isSearching && matchingDrops.length > 0 ? "flex" : "hidden"
         } w-full h-full md:h-auto md:max-h-96 overflow-y-scroll flex-col divide-y divide-dashed md:bg-[#000000BF] md:border md:absolute md:top-8`}
       >
         {matchingDrops.map((drop, index) => (
@@ -107,7 +145,7 @@ function SearchBar() {
             {...drop}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

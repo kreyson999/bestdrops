@@ -68,7 +68,7 @@ export default function Home({ hotDrops, drops }) {
         </nav>
         <div className="max-w-screen-xl mx-auto flex flex-col md:grid md:grid-cols-3 md:my-4 md:gap-x-4 lg:gap-x-6">
           <Link href={`/drop/${hotDrops[currentHotDrop].slug}`}>
-            <a className="relative max-w-[500px] self-center mx-4 z-10 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
+            <a className="relative max-w-[500px] self-center mx-4 z-5 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
               <Image
                 src={hotDrops[currentHotDrop].featuredImage.url}
                 width={500}
@@ -110,7 +110,7 @@ export default function Home({ hotDrops, drops }) {
           </div>
         </div>
         {/* Mobile Circles */}
-        <div className="md:relative md:z-50 flex items-center mt-6 md:space-x-96">
+        <div className="md:relative md:z-20 flex items-center mt-6 md:space-x-96">
           <hr className="grow border-t" />
           <div className="md:hidden flex mx-4 space-x-1.5">
             {hotDrops.map((drop, index) => (
