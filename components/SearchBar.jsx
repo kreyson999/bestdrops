@@ -23,10 +23,14 @@ function SearchBar() {
     }
   };
 
-  // const onBlur = () => {
-  //   if (windowWidth < 768) return;
-  //   setIsSearching(false);
-  // };
+  const onBlur = () => {
+    if (windowWidth < 768) return;
+    setIsSearching(false);
+  };
+  const onFocus = () => {
+    if (windowWidth < 768) return;
+    setIsSearching(true);
+  };
 
   const handleOpenSearch = () => {
     setIsSearching(true);
@@ -60,17 +64,30 @@ function SearchBar() {
   }, [isSearching]);
 
   return (
-    <div className="flex flex-col relative z-50">
-      <button type="button" onClick={handleOpenSearch} className="grid w-9 h-9">
-        <Image
-          src="/icons/search.svg"
-          width={64}
-          height={64}
-          alt="Ikona lupy"
+    <div className="relative flex flex-col">
+      <div className="relative flex md:before:absolute md:before:border-b md:before:-bottom-0.5 md:before:w-full">
+        <input
+          onChange={handleOnChange}
+          placeholder="Szukaj"
+          onBlur={onBlur}
+          onFocus={onFocus}
+          className="hidden md:block w-full w-80 text-xl bg-transparent text-white placeholder:text-white focus:outline-none"
         />
-      </button>
+        <button
+          type="button"
+          onClick={handleOpenSearch}
+          className="grid w-9 h-9"
+        >
+          <Image
+            src="/icons/search.svg"
+            width={64}
+            height={64}
+            alt="Ikona lupy"
+          />
+        </button>
+      </div>
       {/* Mobile Search Page */}
-      {isSearching && (
+      {isSearching && windowWidth < 768 && (
         <div className="fixed flex flex-col z-50 top-0 left-0 w-full h-full bg-dark-blue">
           <div className="bg-blue flex items-center justify-between px-4 py-5 space-x-4">
             <input
@@ -91,7 +108,7 @@ function SearchBar() {
               />
             </button>
           </div>
-          <div className="relative z-[999] flex flex-col overflow-y-scroll">
+          <div className="flex flex-col overflow-y-scroll divide-y">
             {matchingDrops.map((drop, index) => (
               <SearchBarItem
                 index={index}
@@ -103,49 +120,18 @@ function SearchBar() {
           </div>
         </div>
       )}
-      {/* <div
-        className={`${
-          isSearching ? "flex bg-blue px-4 py-4" : ""
-        } md:flex md:px-0 md:py-0`}
-      >
-        <input
-          ref={inputRef}
-          onBlur={onBlur}
-          onChange={handleOnChange}
-          placeholder="Szukaj"
-          className={`${
-            isSearching
-              ? "block w-full text-white"
-              : "hidden w-72 text-light-blue"
-          } md:block bg-transparent placeholder:text-white  text-lg focus:outline-none`}
-        />
-        <button
-          type="button"
-          onClick={isSearching ? handleCloseSearch : handleOpenSearch}
-          className="grid w-8 h-8 md:w-7 md:h-7"
-        >
-          <Image
-            src={isSearching ? "/icons/close.svg" : "/icons/search.svg"}
-            width={64}
-            height={64}
-            alt={isSearching ? "Ikona Szukaj" : "Ikona zamknij"}
-          />
-        </button>
-      </div>
-      <div
-        className={`${
-          isSearching && matchingDrops.length > 0 ? "flex" : "hidden"
-        } w-full h-full md:h-auto md:max-h-96 overflow-y-scroll flex-col divide-y divide-dashed md:bg-[#000000BF] md:border md:absolute md:top-8`}
-      >
-        {matchingDrops.map((drop, index) => (
-          <SearchBarItem
-            index={index}
-            key={drop.name}
-            onClick={handleClearState}
-            {...drop}
-          />
-        ))}
-      </div> */}
+      {isSearching && windowWidth >= 768 && (
+        <div className="absolute top-[38px] w-full border-l border-r border-b bg-[#000000BF] h-96 flex flex-col overflow-y-scroll divide-y">
+          {matchingDrops.map((drop, index) => (
+            <SearchBarItem
+              index={index}
+              key={drop.name}
+              onClick={handleClearState}
+              {...drop}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

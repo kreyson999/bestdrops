@@ -18,7 +18,7 @@ function SearchBarItem({ onClick, name, featuredImage, slug, index }) {
         tabIndex={index}
         className="p-2 flex space-x-2"
       >
-        <div className="flex-none grid w-16 h-16">
+        <div className="flex-none grid w-20 h-20">
           <Image
             src={featuredImage.url}
             width={64}

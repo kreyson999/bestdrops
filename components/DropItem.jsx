@@ -8,14 +8,14 @@ import Price from "./Price";
 function DropItem({ name, slug, featuredImage, resell, retail }) {
   return (
     <Link href={`/drop/${slug}`}>
-      <a className="border-2 border-light-blue p-1.5 lg:p-2 flex space-x-2 transition duration-500 transform hover:-translate-y-1">
+      <a className="border-2 border-light-blue p-1.5 lg:p-2 flex space-x-2">
         <div className="flex-none grid col-span-5 h-[128px] w-[128px] md:w-[165px] md:h-[165px]">
           <Image
             src={featuredImage.url}
             width={256}
             height={256}
             alt={`Wygląd buta o nazwie ${name}`}
-            className="object-cover"
+            className="object-cover rounded"
           />
         </div>
         <div className="grow flex flex-col text-right items-end justify-between">

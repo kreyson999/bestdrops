@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function HotDropItem({ name, featuredImage }) {
   return (
-    <div className="relative flex border-b pb-2 md:w-full lg:w-11/12 space-x-4 justify-self-end">
+    <div className="relative flex border-b mt-2 pb-2 md:w-full lg:w-11/12 space-x-4 justify-self-end">
       <div className="grid aspect-square">
         <Image
           src={featuredImage.url}

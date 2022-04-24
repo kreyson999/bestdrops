@@ -32,7 +32,7 @@ export default function Home({ hotDrops, drops }) {
   return (
     <>
       <SeoHead {...seoObject} />
-      <header className="relative z-0 before:absolute before:w-full before:h-1/3 before:bg-blue before:left-0 before:top-0 md:before:w-1/4 xl:before:w-3/12 2xl:before:w-2/6 md:before:h-full">
+      <header className="relative before:absolute before:w-full before:h-1/3 before:bg-blue before:left-0 before:top-0 md:before:w-1/4 xl:before:w-3/12 2xl:before:w-2/6 md:before:h-full">
         <nav className="max-w-screen-xl 2xl:pt-6 mx-auto relative z-10 flex items-center justify-between px-4 pt-4">
           <div className="flex items-center">
             <div className="2xl:absolute 2xl:-left-14 2xl:top-2 2xl:flex 2xl:flex-col 2xl:items-center ">
@@ -104,7 +104,7 @@ export default function Home({ hotDrops, drops }) {
             </div>
           </div>
           <div className="hidden md:grid grid-rows-3 py-6 mr-4">
-            {hotDrops.slice(0, 3).map((drop) => (
+            {hotDrops.map((drop) => (
               <HotDropItem key={drop.name} {...drop} />
             ))}
           </div>
@@ -141,7 +141,7 @@ export default function Home({ hotDrops, drops }) {
 
 export async function getStaticProps() {
   const date = new Date();
-  const hotDrops = await getHotDrops(1, date);
+  const hotDrops = await getHotDrops(3, date);
   const drops = await getAllDrops(6, date);
   return {
     props: {
