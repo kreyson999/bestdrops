@@ -120,7 +120,7 @@ function SearchBar() {
           </div>
         </div>
       )}
-      {isSearching && windowWidth >= 768 && (
+      {isSearching && matchingDrops.length > 0 && windowWidth >= 768 && (
         <div className="absolute top-[38px] w-full border-l border-r border-b bg-[#000000BF] h-96 flex flex-col overflow-y-auto divide-y">
           {matchingDrops.map((drop, index) => (
             <SearchBarItem
