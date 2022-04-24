@@ -23,6 +23,7 @@ function DropItemPage({
   resell,
   retail,
   slug,
+  dropPlace,
 }) {
   const seoObject = {
     title: name,
@@ -49,13 +50,16 @@ function DropItemPage({
           />
         </div>
         <div className="mt-2 mb-6 md:mt-0 md:mb-0 md:flex md:flex-col md:justify-between text-right">
-          <div>
+          <div className="flex flex-col">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl  font-extrabold text-light-blue uppercase">
               {name}
             </h1>
             <p className="text-xl md:text-2xl lg:text-[1.7rem] xl:text-3xl font-extralight">
               {getFormattedDate(date)}
             </p>
+            <span className="text-gray-300 text-xl block mt-2 mb-3">
+              Miejsce dropu: {dropPlace}
+            </span>
           </div>
           <div className="mt-3 md:mt-0 flex flex-col items-end space-y-0.5 lg:space-y-1.5 md:space-y-1 text-xl md:text-2xl lg:text-[1.7rem] xl:text-3xl">
             <Price title="Retail" price={retail} toolTip={retailTooltip} />
