@@ -8,8 +8,7 @@ import {
 } from "../../lib/graphCMS";
 import getFormattedDate from "../../helpers/getFormattedDate";
 
-import { SeoHead, Price, Button } from "../../components";
-import Navbar from "../../components/Navbar";
+import { SeoHead, Price, Button, Navbar } from "../../components";
 import { resellTooltip, retailTooltip } from "../../helpers/constants";
 
 function DropItemPage({

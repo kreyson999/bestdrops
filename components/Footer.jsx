@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import Link from "next/link";
 
 import Button from "./Button";
 import SocialIcon from "./SocialIcon";
@@ -33,11 +32,7 @@ function Footer() {
             Zdjęcia użyte na stronie nie są naszego autorstwa i należa do ich
             prawnych właścicieli.
           </p>
-          <Link href="/kontakt">
-            <a type="button" className="text-blue font-semibold">
-              Kontakt z nami
-            </a>
-          </Link>
+          <span className="text-blue font-semibold">contact@bestdrops.pl</span>
         </div>
       </div>
       <div className="w-full flex space-x-4 items-center mb-1">

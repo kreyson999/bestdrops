@@ -1,6 +1,5 @@
 import React from "react";
-import { DropItem, SeoHead } from "../components";
-import Navbar from "../components/Navbar";
+import { DropItem, SeoHead, Navbar } from "../components";
 import {
   getDropsWithPagination,
   REVALIDATE_PAGE_CONTENT,
