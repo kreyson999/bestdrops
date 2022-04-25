@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export":"off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }

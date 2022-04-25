@@ -1,41 +1,47 @@
-import Image from "next/image";
-import Link from "next/link";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
 
-const Footer = () => {
+import Button from "./Button";
+import SocialIcon from "./SocialIcon";
+
+function Footer() {
   return (
-    <footer className="bg-custom-black text-white py-8 md:py-16 mt-16">
-      <div className="container mx-auto px-4 flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between items-center md:space-x-12">
-        <div>
-          <p className="font-bold">&copy; 2022 BESTDROPS.PL</p>
-          <p className="text-gray-300">Zdjęcia użyte na stronie nie są naszego autorstwa i należą do ich prawdziwych właścicieli!</p>
-          <Link href={'/contact'}>
-            <a className="text-blue-500 font-bold">
-              Kontakt z nami
-            </a>
-          </Link>
+    <footer className="flex flex-col items-center pt-6 bg-dark-blue">
+      <div className="w-full flex space-x-4 items-center mb-1">
+        <hr className="grow border-t border-white" />
+        <div className="flex space-x-2">
+          <SocialIcon
+            url="https://www.instagram.com/bestdrops.pl/"
+            icon="/icons/instagram.svg"
+            alt="Ikona instagram.com"
+          />
+          <SocialIcon
+            url="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL"
+            icon="/icons/tiktok.svg"
+            alt="Ikona tiktok.com"
+          />
         </div>
-        <div className="space-x-2 flex">
-          <a className="w-9 h-9 block" aria-label="Nasz instagram" href="https://www.instagram.com/bestdrops.pl/">
-            <Image
-            src={'/icons/instagram.svg'}
-            alt="Nasz instagram"
-            width={64}
-            height={64}
-            />
-          </a>
-          <a className="w-9 h-9 block" aria-label="Nasz tiktok" href="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL">
-            <Image
-            src={'/icons/tiktok.svg'}
-            alt="Nasz tiktok"
-            width={64}
-            height={64}
-            />
-          </a>
+        <hr className="grow border-t border-white" />
+      </div>
+      <div className="p-4 flex flex-col md:w-full md:justify-between md:flex-row max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+        <div className="self-center md:order-last">
+          <Button text="Poprzednie dropy" href="/poprzedniedropy" />
+        </div>
+        <div className="mt-4">
+          <p className="md:w-96">
+            Zdjęcia użyte na stronie nie są naszego autorstwa i należa do ich
+            prawnych właścicieli.
+          </p>
+          <span className="text-blue font-semibold">contact@bestdrops.pl</span>
         </div>
       </div>
+      <div className="w-full flex space-x-4 items-center mb-1">
+        <hr className="grow border-t border-white" />
+        <span className="text-light-blue">© 2022 BESTDROPS.PL</span>
+        <hr className="grow border-t border-white" />
+      </div>
     </footer>
-
   );
 }
- 
+
 export default Footer;

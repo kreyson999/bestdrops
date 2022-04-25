@@ -1,10 +1,12 @@
-const Loader = () => {
+import React from "react";
+
+function Loader() {
   return (
     <>
-      <div className={`h-full w-full flex justify-center items-center`}>
+      <div className="h-full w-full flex justify-center items-center">
         <div className="ripple-loader">
-          <div></div>
-          <div></div>
+          <div />
+          <div />
         </div>
       </div>
       <style jsx>
@@ -47,5 +49,5 @@ const Loader = () => {
     </>
   );
 }
- 
+
 export default Loader;

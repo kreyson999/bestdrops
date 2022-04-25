@@ -1,76 +1,50 @@
-import { useState } from 'react'
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import SocialIcon from "./SocialIcon";
+import SearchBar from "./SearchBar";
 
-
-const NavLink = ({href, children}) => {
-  const router = useRouter()
-  const { asPath } = router
-  const isActive = href === asPath
-
+function Navbar({ title }) {
   return (
-    <Link href={href}>
-      <a className={`block font-bold uppercase grid text-white text-xl md:text-2xl h-full place-content-center py-2 md:py-3 px-1 ${isActive ? 'md:border-b-2 md:border-t-2 border-t-custom-black border-b-blue-600' : ''}`}>
-        {children}
-      </a>
-    </Link>
-  );
-}
-
-const Navbar = () => {
-
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
-
-  const handleOpeningNavbar = () => {
-    setIsNavbarOpen(state => !state)
-  }
-
-  return (
-    <nav className="fixed top-0 z-50 w-full bg-custom-black border-b border-gray-700">
-      <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between">
-        <div className="flex justify-between sm:w-min sm:justify-start">
-          <Link href={'/'}>
-            <a className="h-full grid place-content-center py-1.5 px-1">
-              <div className="h-12 w-12">
+    <nav className="relative before:absolute before:w-1/2 sm:before:w-2/6 before:h-full before:bg-blue before:left-0">
+      <div className="relative z-50 max-w-screen-xl mx-auto flex items-center justify-between px-4 pt-2 pb-2 2xl:pb-6 2xl:pt-6">
+        <div className="flex items-center ">
+          <div className="2xl:absolute 2xl:-left-14 2xl:top-2 2xl:flex 2xl:flex-col 2xl:items-center ">
+            <Link href="/">
+              <a className="grid w-10 2xl:w-12">
                 <Image
-                  src={'/images/logo.svg'}
-                  alt="Home"
-                  width={64}
-                  height={64}
+                  src="/images/logo.svg"
+                  width={100.05}
+                  height={128}
+                  alt="Logo naszego serwisu"
+                  priority
                 />
-              </div>
-            </a>
-          </Link>
-          <button
-          className='sm:hidden'
-          onClick={handleOpeningNavbar}>
-            <div className="h-10 w-10">
-              <Image
-                src={'/icons/menu.svg'}
-                alt="Open menu"
-                width={64}
-                height={64}
+              </a>
+            </Link>
+            <hr className="hidden 2xl:block border-l border-white h-32 mt-6" />
+            <div className="hidden 2xl:block my-4 space-y-2">
+              <SocialIcon
+                url="https://www.instagram.com/bestdrops.pl/"
+                icon="/icons/instagram.svg"
+                alt="Ikona instagram.com"
+              />
+              <SocialIcon
+                url="https://www.tiktok.com/@bestdrops.pl?lang=pl-PL"
+                icon="/icons/tiktok.svg"
+                alt="Ikona tiktok.com"
               />
             </div>
-          </button>
+            <hr className="hidden 2xl:block border-l border-white h-24" />
+          </div>
+          <span className="ml-2 2xl:ml-0 font-bold uppercase text-2xl">
+            {title}
+          </span>
         </div>
-        <ul onClick={handleOpeningNavbar} className={`flex sm:space-x-4 ${isNavbarOpen ? 'flex-col sm:flex-row' : 'hidden sm:flex'}`}>
-          <li>
-            <NavLink href={'/hotdrops'}>
-              Hot dropy
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href={'/drops'}>
-              Dropy
-            </NavLink>
-          </li>
-        </ul>
+        <SearchBar />
       </div>
     </nav>
   );
 }
- 
+
 export default Navbar;

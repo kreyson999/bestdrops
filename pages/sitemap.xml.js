@@ -1,4 +1,4 @@
-import { getDropsWithPagination } from "../lib/graphCMS"
+import { getDropsWithPagination } from "../lib/graphCMS";
 
 const Sitemap = () => {};
 
@@ -8,9 +8,9 @@ export const getServerSideProps = async ({ res }) => {
     production: "https://bestdrops.pl",
   }[process.env.NODE_ENV];
 
-  const date = new Date()
-  const dynamicDropsUrls = await getDropsWithPagination(100, false, true, date)
-  const dynamicDropsPages = dynamicDropsUrls.map(({slug}) => ({ slug }))
+  const date = new Date();
+  const dynamicDropsUrls = await getDropsWithPagination(100, false, true, date);
+  const dynamicDropsPages = dynamicDropsUrls.map(({ slug }) => ({ slug }));
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -33,7 +33,7 @@ export const getServerSideProps = async ({ res }) => {
         <priority>1.0</priority>
       </url>
       ${dynamicDropsPages
-        .map(({slug}) => {
+        .map(({ slug }) => {
           return `
             <url>
               <loc>${baseUrl}/drops/${slug}</loc>

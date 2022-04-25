@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -5,22 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      maxWidth: {
-        'screen': '100vw'
-      },
       colors: {
-        'custom-black':'#141414',
-        'black-w-opacity': '#000000D1',
+        "dark-blue": "#001F31",
+        "dark-gray": "#323232",
+        "light-blue": "#C1E9FF",
+        "blue-opacity": "#00446A",
+        blue: "#0096EA",
       },
-      fontFamily: {
-        'sans': ['Archivo', 'Arial', 'sans-serif']
-      },
-      padding: {        
-        '34': '8.5rem',      
-      }
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
-}
+  plugins: [require("@tailwindcss/line-clamp")],
+};
