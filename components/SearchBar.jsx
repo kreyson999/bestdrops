@@ -25,7 +25,9 @@ function SearchBar() {
 
   const onBlur = () => {
     if (windowWidth < 768) return;
-    setIsSearching(false);
+    setTimeout(() => {
+      setIsSearching(false);
+    }, 100);
   };
   const onFocus = () => {
     if (windowWidth < 768) return;
@@ -67,6 +69,7 @@ function SearchBar() {
     <div className="relative flex flex-col">
       <div className="relative flex md:before:absolute md:before:border-b md:before:-bottom-0.5 md:before:w-full">
         <input
+          ref={inputRef}
           onChange={handleOnChange}
           placeholder="Szukaj"
           onBlur={onBlur}

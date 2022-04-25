@@ -103,7 +103,7 @@ export default function Home({ hotDrops, drops }) {
               />
             </div>
           </div>
-          <div className="hidden md:grid grid-rows-3 py-6 mr-4">
+          <div className="hidden md:divide-y md:grid grid-rows-3 py-6 mr-4">
             {hotDrops.map((drop) => (
               <HotDropItem key={drop.name} {...drop} />
             ))}
