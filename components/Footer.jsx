@@ -32,7 +32,12 @@ function Footer() {
             Zdjęcia użyte na stronie nie są naszego autorstwa i należa do ich
             prawnych właścicieli.
           </p>
-          <span className="text-blue font-semibold">contact@bestdrops.pl</span>
+          <a
+            href="mailto:contact@bestdrops.pl"
+            className="text-blue font-semibold"
+          >
+            contact@bestdrops.pl
+          </a>
         </div>
       </div>
       <div className="w-full flex space-x-4 items-center mb-1">

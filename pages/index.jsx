@@ -22,7 +22,7 @@ export default function Home({ hotDrops, drops }) {
     <>
       <SeoHead {...seoObject} />
       <header className="relative before:absolute before:w-full before:h-1/3 before:bg-blue before:left-0 before:top-0 md:before:w-1/4 xl:before:w-3/12 2xl:before:w-2/6 md:before:h-full">
-        <nav className="max-w-screen-xl 2xl:pt-6 mx-auto relative z-10 flex items-center justify-between px-4 pt-4">
+        <nav className="max-w-screen-xl 2xl:pt-6 mx-auto relative z-30 flex items-center justify-between px-4 pt-4">
           <div className="flex items-center">
             <div className="2xl:absolute 2xl:-left-14 2xl:top-2 2xl:flex 2xl:flex-col 2xl:items-center ">
               <div className="grid w-12">
