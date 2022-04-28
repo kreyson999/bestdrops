@@ -1,28 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import {
   getHotDrops,
   getAllDrops,
   REVALIDATE_PAGE_CONTENT,
 } from "../lib/graphCMS";
-import getFormattedDate from "../helpers/getFormattedDate";
 
-import {
-  DropItem,
-  HotDropItem,
-  Price,
-  SearchBar,
-  SeoHead,
-  SocialIcon,
-} from "../components";
-import { resellTooltip, retailTooltip } from "../helpers/constants";
+import { DropItem, SearchBar, SeoHead, SocialIcon } from "../components";
+import HomeHeader from "../components/HomeHeader";
 
 export default function Home({ hotDrops, drops }) {
-  const [currentHotDrop] = useState(0);
-
   const seoObject = {
     title: "BESTDROPS.PL",
     url: `https://bestdrops.pl/`,
@@ -66,64 +55,7 @@ export default function Home({ hotDrops, drops }) {
           </div>
           <SearchBar />
         </nav>
-        <div className="max-w-screen-xl mx-auto flex flex-col md:grid md:grid-cols-3 md:my-4 md:gap-x-4 lg:gap-x-6">
-          <Link href={`/drop/${hotDrops[currentHotDrop].slug}`}>
-            <a className="relative max-w-[500px] self-center mx-4 z-5 grid my-4 lg:my-6 px-1.5 py-1.5 border-2 border-light-blue md:my-0 md:mx-0 md:ml-4">
-              <Image
-                src={hotDrops[currentHotDrop].featuredImage.url}
-                width={500}
-                height={500}
-                className="object-cover"
-                alt={`Wygląd buta o nazwie ${hotDrops[currentHotDrop].name}`}
-                priority
-              />
-            </a>
-          </Link>
-          <div className="flex flex-col justify-between md:my-6">
-            <div className="text-right mx-4 md:mx-0">
-              <Link href={`/drop/${hotDrops[currentHotDrop].slug}`}>
-                <a className="uppercase font-extrabold text-[2.1rem] leading-[2.25rem] lg:text-5xl text-light-blue hover:text-white line-clamp-4">
-                  {hotDrops[currentHotDrop].name}
-                </a>
-              </Link>
-              <span className="text-xl lg:text-2xl font-extralight">
-                {getFormattedDate(hotDrops[currentHotDrop].date)}
-              </span>
-            </div>
-            <div className="mx-4 flex flex-col items-end mt-4 text-2xl lg:text-[1.7rem] md:mx-0 md:space-y-1">
-              <Price
-                title="Retail"
-                price={hotDrops[currentHotDrop].retail}
-                toolTip={retailTooltip}
-              />
-              <Price
-                title="Resell"
-                price={hotDrops[currentHotDrop].resell}
-                toolTip={resellTooltip}
-              />
-            </div>
-          </div>
-          <div className="hidden md:divide-y md:grid grid-rows-3 py-6 mr-4">
-            {hotDrops.map((drop) => (
-              <HotDropItem key={drop.name} {...drop} />
-            ))}
-          </div>
-        </div>
-        {/* Mobile Circles */}
-        <div className="md:relative md:z-20 flex items-center mt-6 md:space-x-96">
-          <hr className="grow border-t" />
-          <div className="md:hidden flex mx-4 space-x-1.5">
-            {hotDrops.map((drop, index) => (
-              <div
-                key={drop.name}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentHotDrop ? "bg-blue" : "bg-blue-opacity"
-                }`}
-              />
-            ))}
-          </div>
-          <hr className="grow border-t" />
-        </div>
+        <HomeHeader hotDrops={hotDrops} />
       </header>
       <section className="px-4 pt-6 pb-8 lg:pt-12 lg:pb-12 max-w-screen-xl mx-auto">
         <h3 className="text-xl lg:text-2xl text-light-blue font-extralight uppercase mb-4">

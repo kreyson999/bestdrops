@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "hotdrop-opacity": "#032F47",
         "dark-blue": "#001F31",
         "dark-gray": "#323232",
         "light-blue": "#C1E9FF",
