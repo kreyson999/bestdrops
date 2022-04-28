@@ -7,11 +7,15 @@ function HomeHeaderMobile({ hotDrops }) {
   const [windowWidth] = useWindowSize();
   const [dropIndex, setDropIndex] = useState(0);
   // mobile slider
+  const isDragging = useRef(false);
   const prevTranslate = useRef(0);
   const sliderContainer = useRef(null);
   const startPos = useRef(0);
-  const endPos = useRef(0);
   const translatedBy = useRef(0);
+
+  const getPositionX = (e) => {
+    return e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
+  };
 
   const transformCarousel = (x) => {
     const slider = sliderContainer.current;
@@ -19,10 +23,18 @@ function HomeHeaderMobile({ hotDrops }) {
   };
 
   const touchStart = useCallback((e) => {
-    startPos.current = e.touches[0].pageX;
+    isDragging.current = true;
+    startPos.current = getPositionX(e);
   }, []);
 
+  const touchLeave = () => {
+    isDragging.current = false;
+  };
+
   const touchEnd = useCallback(() => {
+    if (!isDragging) return;
+    isDragging.current = false;
+
     const slider = sliderContainer.current;
     const { width } = slider.getBoundingClientRect();
 
@@ -47,9 +59,9 @@ function HomeHeaderMobile({ hotDrops }) {
   }, [dropIndex]);
 
   const touchMove = useCallback((e) => {
-    const translate = startPos.current - e.touches[0].pageX;
+    if (!isDragging.current) return;
+    const translate = startPos.current - getPositionX(e);
     transformCarousel(translate + prevTranslate.current);
-    endPos.current = e.touches[0].pageX;
     translatedBy.current = translate;
   }, []);
 
@@ -67,23 +79,41 @@ function HomeHeaderMobile({ hotDrops }) {
       slide.addEventListener("touchstart", touchStart);
       slide.addEventListener("touchend", touchEnd);
       slide.addEventListener("touchmove", touchMove);
+      // mouse events
+      slide.addEventListener("mousedown", touchStart);
+      slide.addEventListener("mouseup", touchEnd);
+      slide.addEventListener("mouseleave", touchLeave);
+      slide.addEventListener("mousemove", touchMove);
     });
     // eslint-disable-next-line no-undef
     window.addEventListener("resize", resizeSlides);
+    const hideContextMenu = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    // eslint-disable-next-line no-undef
+    window.addEventListener("contextmenu", hideContextMenu);
     return () => {
       slides.forEach((slide) => {
         slide.removeEventListener("touchstart", touchStart);
         slide.removeEventListener("touchend", touchEnd);
         slide.removeEventListener("touchmove", touchMove);
+        // mouse events
+        slide.removeEventListener("mousedown", touchStart);
+        slide.removeEventListener("mouseup", touchEnd);
+        slide.removeEventListener("mouseleave", touchLeave);
+        slide.removeEventListener("mousemove", touchMove);
       });
       // eslint-disable-next-line no-undef
       window.removeEventListener("resize", resizeSlides);
+      // eslint-disable-next-line no-undef
+      window.removeEventListener("contextmenu", hideContextMenu);
     };
   }, [windowWidth, touchStart, touchEnd, touchMove, resizeSlides]);
 
   return (
     <>
-      <div className="max-w-[100vw] overflow-hidden mx-auto flex flex-col">
+      <div className="max-w-[100vw] mx-auto overflow-hidden flex flex-col">
         <div
           ref={sliderContainer}
           className="transition-transform inline-flex relative col-span-2 h-full"

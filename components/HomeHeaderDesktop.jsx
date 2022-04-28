@@ -39,7 +39,7 @@ function HomeHeaderDesktop({ hotDrops }) {
 
   return (
     <>
-      <div className="max-w-screen-xl mx-auto grid grid-cols-3 my-4 lg:my-8 gap-x-4 lg:gap-x-6">
+      <div className="max-w-screen-xl overflow-hidden mx-auto grid grid-cols-3 my-4 lg:my-8 gap-x-4 lg:gap-x-6">
         <div className="relative grid place-content-center col-span-2 h-full">
           {hotDrops.map((drop, index) => (
             <FeaturedHotDrop

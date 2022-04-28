@@ -63,6 +63,7 @@ function FeaturedHotDrop({
             className="object-cover"
             alt={`Wygląd buta o nazwie ${name}`}
             priority
+            onDragStart={(e) => e.preventDefault()}
           />
         </a>
       </Link>
