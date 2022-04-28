@@ -7,3 +7,5 @@ export { default as HotDropItem } from "./HotDropItem";
 export { default as SocialIcon } from "./SocialIcon";
 export { default as SearchBar } from "./SearchBar";
 export { default as Navbar } from "./Navbar";
+export { default as HomeHeader } from "./HomeHeader";
+export { default as FAQItem } from "./FAQItem";
