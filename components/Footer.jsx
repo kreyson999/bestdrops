@@ -42,7 +42,17 @@ function Footer() {
       </div>
       <div className="w-full flex space-x-4 items-center mb-1">
         <hr className="grow border-t border-white" />
-        <span className="text-light-blue">© 2022 BESTDROPS.PL</span>
+        <span className="text-white">
+          Realizacja:{" "}
+          <a
+            href="https://mlynek.xyz/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-light-blue"
+          >
+            www.mlynek.xyz
+          </a>{" "}
+        </span>
         <hr className="grow border-t border-white" />
       </div>
     </footer>

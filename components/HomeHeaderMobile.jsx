@@ -38,14 +38,14 @@ function HomeHeaderMobile({ hotDrops }) {
     const slider = sliderContainer.current;
     const { width } = slider.getBoundingClientRect();
 
-    if (translatedBy.current < -100 && dropIndex > 0) {
+    if (translatedBy.current < -70 && dropIndex > 0) {
       // move to the left
       const moveBy = (dropIndex - 1) * width;
       transformCarousel(moveBy);
       prevTranslate.current = moveBy;
       setDropIndex((state) => state - 1);
     } else if (
-      translatedBy.current > 100 &&
+      translatedBy.current > 70 &&
       dropIndex < slider.children.length - 1
     ) {
       // move to the right

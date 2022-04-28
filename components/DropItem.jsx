@@ -3,9 +3,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import getFormattedDate from "../helpers/getFormattedDate";
+
 import Price from "./Price";
 
-function DropItem({ name, slug, featuredImage, resell, retail }) {
+function DropItem({ name, slug, featuredImage, date, retail }) {
   return (
     <Link href={`/drop/${slug}`}>
       <a className="border-2 border-light-blue p-1.5 lg:p-2 flex space-x-2">
@@ -24,7 +26,7 @@ function DropItem({ name, slug, featuredImage, resell, retail }) {
           </h3>
           <div className="flex flex-col items-end md:text-lg xl:text-xl">
             <Price title="Retail" price={retail} />
-            <Price title="Resell" price={resell} />
+            <span className="text-gray-300">{getFormattedDate(date)}</span>
           </div>
         </div>
       </a>
