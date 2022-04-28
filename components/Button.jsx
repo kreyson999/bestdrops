@@ -14,7 +14,9 @@ function Button({ text, href = "", dontPrerender = false }) {
       {dontPrerender ? (
         <a
           href={href}
+          target="_blank"
           className="block relative w-full h-full z-20 font-semibold uppercase text-lg"
+          rel="noreferrer"
         >
           {text}
         </a>
