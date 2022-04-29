@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import {
   getHotDrops,
-  getAllDrops,
+  getNormalDrops,
   REVALIDATE_PAGE_CONTENT,
 } from "../lib/graphCMS";
 
@@ -74,7 +74,7 @@ export default function Home({ hotDrops, drops }) {
 export async function getStaticProps() {
   const date = new Date();
   const hotDrops = await getHotDrops(3, date);
-  const drops = await getAllDrops(6, date);
+  const drops = await getNormalDrops(date);
   return {
     props: {
       hotDrops,

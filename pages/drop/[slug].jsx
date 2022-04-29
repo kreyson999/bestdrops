@@ -25,7 +25,7 @@ function DropItemPage({
   dropPlace,
 }) {
   const seoObject = {
-    title: name,
+    title: `${name} - BESTDROPS.PL`,
     url: `https://bestdrops.pl/drop/${slug}`,
     image: featuredImage.url,
     description: `${name} będzie dropił już ${getFormattedDate(
