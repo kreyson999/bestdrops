@@ -1,41 +1,45 @@
-import React, { useEffect, useState, useRef } from "react";
-import { gsap } from "gsap";
+import React, { useState, useRef } from "react";
 
 import HotDropItem from "./HotDropItem";
 import FeaturedHotDrop from "./FeaturedHotDrop";
-import useWindowSize from "../hooks/useWindowSize";
 
 function HomeHeaderDesktop({ hotDrops }) {
-  const [windowWidth] = useWindowSize();
   const [dropIndex, setDropIndex] = useState(0);
   const hotDropContainers = useRef(null);
-  const hotDropContainersTimeline = useRef(null);
-  const q = gsap.utils.selector(hotDropContainers);
 
   const handleChangeHotDrop = (index) => {
     setDropIndex(index);
   };
 
-  useEffect(() => {
-    if (hotDrops.length <= 1) return {};
-    const tl = gsap.timeline().from(q(".animateBg"), {
-      width: "0%",
-      duration: 15,
-      ease: "none",
-      onComplete: () => {
-        setDropIndex((state) => {
-          if (state === hotDrops.length - 1) {
-            return 0;
-          }
-          return state + 1;
-        });
-      },
+  const changeAnimationIndex = () => {
+    setDropIndex((state) => {
+      if (state === hotDrops.length - 1) {
+        return 0;
+      }
+      return state + 1;
     });
-    hotDropContainersTimeline.current = tl;
-    return () => {
-      tl.kill();
-    };
-  }, [q, windowWidth, hotDrops.length]);
+  };
+
+  // useEffect(() => {
+  //   if (hotDrops.length <= 1) return {};
+  //   const tl = gsap.timeline().to(q(".animateBg"), {
+  //     width: "100%",
+  //     duration: 15,
+  //     ease: "none",
+  //     onComplete: () => {
+  //       setDropIndex((state) => {
+  //         if (state === hotDrops.length - 1) {
+  //           return 0;
+  //         }
+  //         return state + 1;
+  //       });
+  //     },
+  //   });
+  //   hotDropContainersTimeline.current = tl;
+  //   return () => {
+  //     tl.kill();
+  //   };
+  // }, [q, windowWidth, hotDrops.length]);
 
   return (
     <>
@@ -56,6 +60,7 @@ function HomeHeaderDesktop({ hotDrops }) {
               {...drop}
               isCurrent={index === dropIndex}
               onClick={() => handleChangeHotDrop(index)}
+              onComplete={changeAnimationIndex}
             />
           ))}
         </div>

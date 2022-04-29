@@ -113,7 +113,7 @@ function HomeHeaderMobile({ hotDrops }) {
 
   return (
     <>
-      <div className="max-w-[100vw] mx-auto overflow-hidden flex flex-col">
+      <div className="max-w-[100vw] md:max-w-screen-xl mx-auto overflow-hidden flex flex-col md:grid md:grid-cols-3 md:my-4 lg:my-8 md:gap-x-4 lg:gap-x-6">
         <div
           ref={sliderContainer}
           className="transition-transform inline-flex relative col-span-2 h-full"
