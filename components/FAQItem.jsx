@@ -15,7 +15,7 @@ function FAQItem({ title, text }) {
     const animation = gsap.to(q(".animateContent"), {
       height: isOpen ? "auto" : 0,
       duration: 1,
-      ease: "bounce",
+      ease: "power4",
     });
     return () => {
       animation.kill();
@@ -41,7 +41,7 @@ function FAQItem({ title, text }) {
           />
         </div>
       </button>
-      <div className="animateContent h-0 overflow-hidden text-base md:text-lg rounded-xl font-extralight">
+      <div className="animateContent h-0 overflow-hidden text-base md:text-lg font-extralight">
         <span className="block pt-0 pb-2 ">{text}</span>
       </div>
     </div>

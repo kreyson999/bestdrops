@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
 
-function HotDropItem({ name, featuredImage, isCurrent, onClick }) {
+function HotDropItem({ name, featuredImage, isCurrent, onClick, onComplete }) {
+  const bgRef = useRef(null);
+
+  useEffect(() => {
+    if (!isCurrent) return {};
+    const animation = gsap.from(bgRef.current, {
+      width: "0%",
+      duration: 15,
+      onComplete,
+      ease: "none",
+    });
+    return () => {
+      if (isCurrent) {
+        animation.kill();
+      }
+    };
+  }, [isCurrent, name, onComplete]);
+
   return (
     <button
       type="button"
@@ -23,11 +41,10 @@ function HotDropItem({ name, featuredImage, isCurrent, onClick }) {
         </h2>
       </div>
       <div
-        className={
-          isCurrent
-            ? "bg-[#0C4A6D] absolute w-full h-full z-10 left-0 top-0 absolute animateBg"
-            : ""
-        }
+        ref={bgRef}
+        className={`bg-[#0C4A6D] absolute w-full h-full z-10 left-0 top-0 absolute animateBg ${
+          isCurrent ? "visible" : "invisible"
+        }`}
       />
       <div
         className={`z-0 left-0 top-0 w-full h-full absolute ${
